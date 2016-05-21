@@ -21,6 +21,7 @@ Config.API.Endpoints = {
         GetProductJSON: Config.API.Base + "/user/me",
     },
     Auth: {
-        Login: Config.API.Base + "/auth/login"
+        Login: Config.API.Base + "/auth/login",
+        Create: Config.API.Base + "/auth/create"
     }
 };

@@ -7,6 +7,7 @@ mainApp.controller("EntryController", function($scope, $http, $location, $state,
             $scope.errors = {};
             $state.go('index');
         }, function(error) {
+            $scope.errors = {};
             $scope.errors[error] = true;
             $scope.$apply();
         });

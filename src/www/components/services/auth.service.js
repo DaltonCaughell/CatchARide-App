@@ -40,6 +40,36 @@ mainApp.factory('Auth', function($http, $loading) {
         return deferred.promise;
     };
 
+    service.create = function(name, email, password, address, phone) {
+        var deferred = Q.defer();
+
+        $http.post(Config.API.Endpoints.Auth.Create, {
+            Email: email,
+            Password: password,
+            Name: name,
+            Address: address,
+            Phone: phone
+        }).then(function(res) {
+            var data = res.data;
+            service.setAuth(data.Session.ApiKey);
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            if (res.status === 422) {
+                console.log(res);
+                if (data.length > 0) {
+                    deferred.reject(data[0].fieldNames[0]);
+                } else {
+                    deferred.reject('internal_error');
+                }
+            } else {
+                deferred.reject('internal_error');
+            }
+        });
+
+        return deferred.promise;
+    };
+
     return service;
 
 });
