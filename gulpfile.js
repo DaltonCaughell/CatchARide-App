@@ -129,7 +129,7 @@ gulp.task('include', ['templates'], function() {
         read: false,
     });
 
-    return target.pipe(inject(series(js, obj, base, leg, models, comp), {
+    return target.pipe(inject(series(js, base, models, comp), {
         addRootSlash: false,
         relative: true
     })).pipe(gulp.dest('./src/www'));
