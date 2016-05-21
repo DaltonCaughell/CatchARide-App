@@ -9,32 +9,32 @@ div(style="width:100%;max-width:800px;margin-left:auto;margin-right:auto;")
 		img(src="/assets/img/sports-car.png" style="width:190px;height:190px;")
 	.layout-column.layout-align-center-center()
 		div(ng-messages="errors")
-			div(ng-message="Name", style="color:red;") 
-				p Invalid Name
-			div(ng-message="Email", style="color:red;") 
-				p Invalid Email
-			div(ng-message="Password", style="color:red;") 
-				p Invalid Password
-			div(ng-message="Address", style="color:red;") 
-				p Invalid Address
-			div(ng-message="Phone", style="color:red;") 
-				p Invalid Phone
+			div(ng-message="DLNumber", style="color:red;") 
+				p Invalid Driver's License Number
+			div(ng-message="Brand", style="color:red;") 
+				p Invalid Brand
+			div(ng-message="Model", style="color:red;") 
+				p Invalid Model
+			div(ng-message="Seats", style="color:red;") 
+				p Invalid Number of Seats
+			div(ng-message="LicensePlateNumber", style="color:red;") 
+				p Invalid License Plate Number
 			div(ng-message="internal_error", style="color:red;") 
 				p Internal Error
 		md-input-container(style="width:80%;")
-			label() CAR
-			input(type="text", ng-model="name", required md-maxlength="255")
+			label() DRIVER'S LICENSE #
+			input(type="text", ng-model="dlNumber", required md-maxlength="255")
 		md-input-container(style="width:80%;")
-			label() CAR
-			input(type="email", ng-model="email", required md-maxlength="255")
+			label() CAR BRAND
+			input(type="text", ng-model="brand", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() CAR
-			input(type="password", ng-model="password", required md-maxlength="255")
+			label() MODEL
+			input(type="text", ng-model="model", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() CAR
-			input(type="text", ng-model="address", required md-maxlength="255")
+			label() # OF SEATS
+			input(type="text", ng-model="seats", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() CAR
-			input(type="tel", ng-model="phone", required md-maxlength="10")
-		md-button.layout-align-center-center.md-primary.md-raised(style="width:80%;", ng-click="create(name, email, password, address, phone)")
+			label() LICENSE PLATE NUMBER
+			input(type="text", ng-model="licensePlateNumber", required md-maxlength="10")
+		md-button.layout-align-center-center.md-primary.md-raised(style="width:80%;", ng-click="add(dlNumber, brand, model, seats, licensePlateNumber)")
 			span() SUBMIT
