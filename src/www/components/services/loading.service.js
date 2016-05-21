@@ -1,4 +1,4 @@
-mainApp.service('fbLoading', function($loading) {
+mainApp.service('crLoading', function($loading) {
     var i = 0;
     var enabled = true;
     return {
@@ -6,13 +6,6 @@ mainApp.service('fbLoading', function($loading) {
             var done = false;
             if (enabled) {
                 i++;
-                var t = setTimeout(function() {
-                    if (!done) {
-                        done = true;
-                        $loading.finish(Config.DOM.LoadingOverlay);
-                        toastr.error("Timeout Error, Please Check Your Internet Connection and Try Again");
-                    }
-                }, Config.Loading.TimeToError);
                 $loading.start(Config.DOM.LoadingOverlay);
                 p.then(function() {
                     i--;

@@ -56,7 +56,6 @@ mainApp.factory('Auth', function($http, $loading) {
         }, function(res) {
             var data = res.data;
             if (res.status === 422) {
-                console.log(res);
                 if (data.length > 0) {
                     deferred.reject(data[0].fieldNames[0]);
                 } else {
