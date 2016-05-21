@@ -1,5 +1,6 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
     'darthwade.loading', 'base64', 'ngMaterial'
+
 ]);
 
 mainApp.run(function(ModalService, $rootScope, $state) {
@@ -27,11 +28,17 @@ mainApp.run(function(ModalService, $rootScope, $state) {
 
 });
 
-mainApp.config(function($httpProvider) {
+mainApp.config(function($httpProvider, $mdThemingProvider) {
     //Enable cross domain calls
     $httpProvider.defaults.useXDomain = true;
     //Remove the header used to identify ajax call that would prevent CORS from working
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    $mdThemingProvider.theme('default')
+        .primaryPalette('pink')
+        .accentPalette('orange');
+
+    console.log("here");
 });
 
 var app = {
