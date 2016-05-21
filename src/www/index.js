@@ -35,10 +35,10 @@ mainApp.config(function($httpProvider, $mdThemingProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('pink')
-        .accentPalette('orange');
-
-    console.log("here");
+        .primaryPalette('indigo')
+        .accentPalette('indigo')
+        .backgroundPalette('indigo')
+        .dark();
 });
 
 var app = {
