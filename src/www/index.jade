@@ -1,0 +1,17 @@
+doctype html
+html(ng-app='mainApp', manifest="app.manifest", id="mainApp")
+	head
+		meta(charset='utf-8')
+		link(rel='stylesheet', type='text/css', href='style.min.css')
+		link(rel='stylesheet', type='text/css', href='bundle.min.css')
+		link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
+		title Catch A Ride
+	body(style="")
+		.app(style='height: 100%; width: 100%;', dw-loading="loadingOverlay", dw-loading-options="{text: ''}")
+			div(style='height: 100%; width: 100%;', ui-view='')
+		// auto inject components
+		// inject:js
+		// endinject
+		script(src="cordova.js")
+		script(type='text/javascript').
+			app.initialize();
