@@ -1,5 +1,5 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
-    'darthwade.loading', 'base64'
+    'darthwade.loading', 'base64', 'ngMaterial'
 ]);
 
 mainApp.run(function(ModalService, $rootScope, $state) {
