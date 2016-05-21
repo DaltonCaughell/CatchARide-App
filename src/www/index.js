@@ -3,9 +3,9 @@ var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModal
 
 ]);
 
-mainApp.run(function(ModalService, $rootScope, $state) {
+mainApp.run(function(ModalService, $rootScope, $state, Auth) {
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, Auth, $state) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, $state) {
 
         var requireLogin = toState.data.requireLogin;
 
