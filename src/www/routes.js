@@ -1,6 +1,13 @@
 mainApp.config(function($stateProvider, $urlRouterProvider) {
 
-    $stateProvider
+    $stateProvider.state('signup', {
+            url: "/signup",
+            templateUrl: "components/pages/sign-up/sign-up.html",
+            controller: "SignUpController",
+            data: {
+                requireLogin: false
+            }
+        })
         .state('index', {
             url: "/index",
             templateUrl: "components/pages/index/index.html",

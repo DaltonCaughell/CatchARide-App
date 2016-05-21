@@ -13,5 +13,8 @@ div(style="width:100%;max-width:800px;margin-left:auto;margin-right:auto;")
 		md-input-container(style="width:80%;margin-top:5px;")
 			label() PASSWORD
 			input(type="password", ng-model="password", required md-maxlength="255")
+		md-input-container(style="width:80%;margin-top:5px;")
+			label() HOME ADDRESS
+			input(type="password", ng-model="password", required md-maxlength="255")
 		md-button.layout-align-center-center.md-primary.md-raised(style="width:80%;", ng-click="login(email, password)")
 			span() CREATE

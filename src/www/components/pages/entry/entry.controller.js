@@ -12,4 +12,8 @@ mainApp.controller("EntryController", function($scope, $http, $location, $state,
         });
     };
 
+    $scope.signUp = function() {
+        $state.go('signup');
+    };
+
 });
