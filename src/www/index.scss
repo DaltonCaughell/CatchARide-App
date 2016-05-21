@@ -2,3 +2,16 @@ p {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
+
+.cr-main.ng-enter {
+    animation: slideInRight 0.2s;
+}
+
+.cr-main.ng-leave {
+    animation: slideOutLeft 0.2s;
+}
+
+.cr-main md-input-container {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

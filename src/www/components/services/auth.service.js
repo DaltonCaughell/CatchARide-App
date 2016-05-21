@@ -17,58 +17,27 @@ mainApp.factory('Auth', function($http, $loading) {
     };
 
     service.login = function(email, password) {
-        /*$loading.start(Config.DOM.LoadingOverlay);
+
+        var deferred = Q.defer();
 
         var p = $http.post(Config.API.Endpoints.Auth.Login, {
-            email: email,
-            password: password,
-            tabletId: 0
+            Email: email,
+            Password: password
         });
 
-        p.then(function(data) {
-            $loading.finish(Config.DOM.LoadingOverlay);
-            service.setAuth(data.data.userID, data.data.session.key, data.data.companyID);
-            //Sync.TimeBomb(true);
-        }, function() {
-            $loading.finish(Config.DOM.LoadingOverlay);
+        p.then(function(res) {
+            var data = res.data;
+            service.setAuth(data.Session.ApiKey);
+            deferred.resolve(data);
+        }, function(res) {
+            if (res.status === 422) {
+                deferred.reject('incorrect_login');
+            } else {
+                deferred.reject('internal_error');
+            }
         });
 
-        return p;*/
-
-    };
-
-    service.forgot = function(email) {
-        /*$loading.start(Config.DOM.LoadingOverlay);
-
-        var p = $http.post(Config.API.Endpoints.Auth.Forgot, {
-            email: email
-        });
-
-        p.then(function() {
-            $loading.finish(Config.DOM.LoadingOverlay);
-        }, function() {
-            $loading.finish(Config.DOM.LoadingOverlay);
-        });
-
-        return p;*/
-    };
-
-    service.reset = function(password) {
-        /*$loading.start(Config.DOM.LoadingOverlay);
-
-        var p = $http.post(Config.API.Endpoints.Auth.Reset, {
-            userId: localStorage.getItem("userID"),
-            password: password
-        });
-
-        p.then(function(data) {
-            $loading.finish(Config.DOM.LoadingOverlay);
-            //Sync.TimeBomb(true);
-        }, function() {
-            $loading.finish(Config.DOM.LoadingOverlay);
-        });
-
-        return p;*/
+        return deferred.promise;
     };
 
     return service;

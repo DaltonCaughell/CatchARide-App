@@ -1,11 +1,19 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
-    'darthwade.loading', 'base64', 'ngMaterial'
+    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate'
 
 ]);
 
-mainApp.run(function(ModalService, $rootScope, $state, Auth) {
+mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, $state) {
+    $rootScope.Config = Config;
+
+    $animate.enabled(false);
+
+    setTimeout(function() {
+        $animate.enabled(true);
+    }, 200);
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
 
         var requireLogin = toState.data.requireLogin;
 
@@ -13,7 +21,7 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth) {
 
         if (requireLogin && (key === undefined || key === null || key === 0 || key === "")) {
             event.preventDefault();
-            $state.go('login');
+            $state.go('entry');
         }
 
     });
@@ -27,10 +35,10 @@ mainApp.config(function($httpProvider, $mdThemingProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('indigo')
-        .backgroundPalette('indigo')
-        .warnPalette('indigo');
+        .primaryPalette('grey')
+        .accentPalette('grey')
+        .backgroundPalette('grey')
+        .warnPalette('red');
 });
 
 var app = {

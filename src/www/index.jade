@@ -9,7 +9,7 @@ html(ng-app='mainApp', manifest="app.manifest", id="mainApp", ng-cloak)
 		title Catch A Ride
 	body(style="background-color:#ECEFF1;")
 		.app(style='height: 100%; width: 100%;', dw-loading="loadingOverlay", dw-loading-options="{text: ''}")
-			div(style='height: 100%; width: 100%;', ui-view='')
+			div.cr-main(style='height: 100%; width: 100%;', ui-view='')
 		// auto inject components
 		// inject:js
 		// endinject
