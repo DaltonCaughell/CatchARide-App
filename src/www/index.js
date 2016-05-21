@@ -5,24 +5,16 @@ var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModal
 
 mainApp.run(function(ModalService, $rootScope, $state) {
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, Auth, $state) {
 
         var requireLogin = toState.data.requireLogin;
 
-        /*var uid = Auth.getAuth().authKey;
+        var key = Auth.getAuth();
 
-        if (requireLogin && (uid === undefined || uid === null || uid === 0 || uid === "")) {
+        if (requireLogin && (key === undefined || key === null || key === 0 || key === "")) {
             event.preventDefault();
-            ModalService.showModal({
-                templateUrl: 'components/modals/login-modal/login.html',
-                controller: "LoginModalController"
-            }).then(function(modal) {
-                modal.element.modal();
-                modal.close.then(function(result) {
-                    return $state.go(toState.name, toParams);
-                });
-            });
-        }*/
+            $state.go('login');
+        }
 
     });
 
@@ -38,7 +30,7 @@ mainApp.config(function($httpProvider, $mdThemingProvider) {
         .primaryPalette('indigo')
         .accentPalette('indigo')
         .backgroundPalette('indigo')
-        .dark();
+        .warnPalette('indigo');
 });
 
 var app = {
