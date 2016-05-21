@@ -5,7 +5,7 @@ mainApp.controller("SignUpController", function($scope, $http, $location, $state
     $scope.create = function(name, email, password, address, phone) {
         crLoading.showWhile(Auth.create(name, email, password, address, phone)).then(function(data) {
             $scope.errors = {};
-            $state.go('caradd');
+            $state.go('addcar');
             $scope.$apply();
         }, function(error) {
             $scope.errors = {};

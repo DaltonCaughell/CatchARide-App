@@ -1,4 +1,9 @@
 back-button()
+.cr-skip-car-page()
+	md-button.layout-row.flex.layout-align-center-center(ng-click="skip()")
+		p 
+			u Not a driver?
+				b Skip
 div(style="width:100%;max-width:800px;margin-left:auto;margin-right:auto;")
 	.layout-row.layout-align-center-center(style="margin-bottom:0px;")
 		img(src="/assets/img/sports-car.png" style="width:190px;height:190px;")
@@ -17,19 +22,19 @@ div(style="width:100%;max-width:800px;margin-left:auto;margin-right:auto;")
 			div(ng-message="internal_error", style="color:red;") 
 				p Internal Error
 		md-input-container(style="width:80%;")
-			label() NAME
+			label() CAR
 			input(type="text", ng-model="name", required md-maxlength="255")
 		md-input-container(style="width:80%;")
-			label() EMAIL
+			label() CAR
 			input(type="email", ng-model="email", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() PASSWORD
+			label() CAR
 			input(type="password", ng-model="password", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() HOME ADDRESS
+			label() CAR
 			input(type="text", ng-model="address", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
-			label() PHONE NUMBER
+			label() CAR
 			input(type="tel", ng-model="phone", required md-maxlength="10")
 		md-button.layout-align-center-center.md-primary.md-raised(style="width:80%;", ng-click="create(name, email, password, address, phone)")
-			span() CREATE
+			span() SUBMIT
