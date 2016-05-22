@@ -39,7 +39,6 @@ var jade = require('gulp-jade');
 var series = require('stream-series');
 var concatCss = require('gulp-concat-css');
 var minifyCss = require('gulp-minify-css');
-var nodewindows = require('node-windows');
 var deployCdn = require('gulp-deploy-azure-cdn');
 var gutil = require('gulp-util');
 var uploadAzure = require('gulp-upload-azure');
