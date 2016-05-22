@@ -20,6 +20,7 @@ Config.API.Base = Config.API.Protocol + Config.API.Host + Config.API.Version;
 Config.API.Endpoints = {
     User: {
         GetProductJSON: Config.API.Base + "/user/me",
+        AddCar: Config.API.Base + "/user/addcar"
     },
     Auth: {
         Login: Config.API.Base + "/auth/login",

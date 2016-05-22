@@ -31,6 +31,7 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
 mainApp.config(function($httpProvider, $mdThemingProvider) {
     //Enable cross domain calls
     $httpProvider.defaults.useXDomain = true;
+    $httpProvider.interceptors.push('AuthInterceptor');
     //Remove the header used to identify ajax call that would prevent CORS from working
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
