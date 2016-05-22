@@ -2,6 +2,7 @@ var Config = {
     API: {
         Protocol: "http://",
         Host: "localhost:3000",
+        //Host: "app.daltoncaughell.com:3000",
         Version: "/api/v1",
         Base: ""
     },
