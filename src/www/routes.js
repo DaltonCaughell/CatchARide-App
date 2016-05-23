@@ -29,6 +29,48 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 requireLogin: false
             }
+        }).state('chat', {
+            url: "/chat",
+            templateUrl: "components/pages/chat/chat.html",
+            controller: "ChatController",
+            data: {
+                requireLogin: true
+            }
+        }).state('drivers', {
+            url: "/drivers",
+            templateUrl: "components/pages/drivers/drivers.html",
+            controller: "DriversController",
+            data: {
+                requireLogin: true
+            }
+        }).state('parking', {
+            url: "/parking",
+            templateUrl: "components/pages/parking/parking.html",
+            controller: "ParkingController",
+            data: {
+                requireLogin: true
+            }
+        }).state('payment', {
+            url: "/payment",
+            templateUrl: "components/pages/payment/payment.html",
+            controller: "PaymentController",
+            data: {
+                requireLogin: true
+            }
+        }).state('schedule', {
+            url: "/schedule",
+            templateUrl: "components/pages/schedule/schedule.html",
+            controller: "ScheduleController",
+            data: {
+                requireLogin: true
+            }
+        }).state('settings', {
+            url: "/settings",
+            templateUrl: "components/pages/settings/settings.html",
+            controller: "SettingsController",
+            data: {
+                requireLogin: true
+            }
         }).state('default', {
             url: "*path",
             templateUrl: "components/pages/index/index.html",
