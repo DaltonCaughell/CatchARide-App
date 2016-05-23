@@ -3,10 +3,10 @@ mainApp.directive('crFooter', function($rootScope) {
         restrict: 'E',
         transclude: false,
         scope: {
-            page: '='
+            'page': '=page'
         },
         link: function(scope, element, attrs) {
-
+            console.log(scope.page);
         },
         templateUrl: 'components/directives/footer/footer.html'
     };
