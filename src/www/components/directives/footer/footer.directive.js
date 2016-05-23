@@ -2,7 +2,9 @@ mainApp.directive('crFooter', function($rootScope) {
     return {
         restrict: 'E',
         transclude: false,
-        scope: {},
+        scope: {
+            page: '='
+        },
         link: function(scope, element, attrs) {
 
         },
