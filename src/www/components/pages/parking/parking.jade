@@ -1,7 +1,7 @@
 div
 	br
 	br
-	md-card()
+	md-card(ng-repeat="lot in lots")
 		md-card-content()
-			p Parking Page
+			p {{lot.name}}
 cr-footer(page="'parking'")
