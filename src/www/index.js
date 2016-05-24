@@ -1,5 +1,5 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
-    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate'
+    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMaterialDatePicker'
 
 ]);
 

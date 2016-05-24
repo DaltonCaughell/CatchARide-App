@@ -12,16 +12,17 @@ div(style="max-width:800px;margin-left:auto;margin-right:auto;padding-left:10px;
 				label() TO
 				input(type="text", ng-model="to", required, ng-disabled="isToSchool")
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
-			div(class="flex-15")
+			div(class="flex-15", ng-click="setDate()")
 				span.glyphicon.glyphicon-calendar(class="cr-input-icon")
-			div(class="flex-30")
+			div(class="flex-30", ng-click="setDate()")
 				md-input-container(class="flex-100")
 					input(type="text", ng-model="date", required, ng-disabled="true")
 			div(class="flex-15" style="margin-left:10px;")
 				md-icon(md-svg-icon="assets/img/ic_alarm_black_36px.svg", class="cr-input-icon", style="width:46px;height:46px;")
-			div(class="flex-30")
+			div(class="flex-30", style="margin-top:30px;")
 				md-input-container(class="flex-100")
-					input(type="text", ng-model="time", required, ng-disabled="true")
+					input(mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true" 
+					placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class="md-input")
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
 			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100")
 				span(ng-if="isDriver") SCHEDULE

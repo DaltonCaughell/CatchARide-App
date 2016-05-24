@@ -1,4 +1,4 @@
-mainApp.controller("IndexController", function($scope, $http, $location, $state) {
+mainApp.controller("IndexController", function($scope, $http, $location, $state, $mdDialog) {
     $scope.isDriver = false;
 
     $scope.isToSchool = false;
@@ -6,6 +6,9 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state)
 
     $scope.to = "";
     $scope.from = "";
+
+    $scope.date = null;
+    $scope.time = null;
 
     $scope.$watch('to', function() {
         if ($scope.to !== "" && $scope.to !== undefined && $scope.to !== "SCHOOL") {
@@ -30,5 +33,32 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state)
             $scope.to = "";
         }
     });
+
+    $scope.setDate = function($event) {
+        $mdDialog.show({
+            targetEvent: $event,
+            templateUrl: 'components/dialogs/date/date.html',
+            controller: 'DateDialogController',
+            locals: { date: $scope.date }
+        }).then(function(date) {
+            $scope.date = date;
+        }, function() {
+
+        });
+    };
+
+    $scope.setTime = function($event) {
+        $mdDialog.show({
+            targetEvent: $event,
+            templateUrl: 'components/dialogs/time/time.html',
+            controller: 'TimeDialogController',
+            locals: { time: $scope.time }
+        }).then(function(time) {
+            console.log(time);
+            //$scope.date = date;
+        }, function() {
+
+        });
+    };
 
 });
