@@ -1,7 +1,13 @@
-div
+div(style="max-width:1024px;margin-left:auto;margin-right:auto;margin-bottom:120px;")
 	br
-	br
-	md-card(ng-repeat="lot in lots")
+	md-card(ng-repeat="lot in lots" class="cr-parking-card")
 		md-card-content()
-			p {{lot.name}}
+			div(class="layout-row layout-align-center-center")
+				div(class="flex-25", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+					span {{lot.Name}}
+				div(class="flex-40", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+					span Spaces Available: {{lot.Available}}
+				div(class="flex-35", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+					md-switch(ng-model="lot.notify" aria-label="Notifications") 
+						span(class="cr-switch-text") Notifications
 cr-footer(page="'parking'")

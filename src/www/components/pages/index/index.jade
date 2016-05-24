@@ -1,7 +1,29 @@
-div
-	br
-	br
-	md-card()
-		md-card-content()
-			p Search Page
+div(style="max-width:800px;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;margin-bottom:110px;")
+	div(class="layout-row layout-align-center-center cr-type-select" style="width:390px;")
+		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !isDriver}", ng-click="isDriver = false;") PASSANGER
+		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : isDriver}", ng-click="isDriver = true;") DRIVER
+	div(class="cr-search-body layout-column layout-align-center-center")
+		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+			md-input-container(class="flex-100")
+				label() FROM
+				input(type="text", ng-model="from", required, ng-disabled="isFromSchool")
+		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+			md-input-container(style="margin-top:5px;", class="flex-100")
+				label() TO
+				input(type="text", ng-model="to", required, ng-disabled="isToSchool")
+		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+			div(class="flex-15")
+				span.glyphicon.glyphicon-calendar(class="cr-input-icon")
+			div(class="flex-30")
+				md-input-container(class="flex-100")
+					input(type="text", ng-model="date", required, ng-disabled="true")
+			div(class="flex-15" style="margin-left:10px;")
+				md-icon(md-svg-icon="assets/img/ic_alarm_black_36px.svg", class="cr-input-icon", style="width:46px;height:46px;")
+			div(class="flex-30")
+				md-input-container(class="flex-100")
+					input(type="text", ng-model="time", required, ng-disabled="true")
+		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
+			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100")
+				span(ng-if="isDriver") SCHEDULE
+				span(ng-if="!isDriver") SEARCH
 cr-footer(page="'index'")

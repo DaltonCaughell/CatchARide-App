@@ -1,1 +1,23 @@
+.cr-parking-card {
+    font-size: 12px;
+}
 
+.cr-parking-card md-switch {
+    margin: 0px 0px 0px 0px;
+}
+
+.cr-parking-card .none {
+    color: red;
+}
+
+.cr-parking-card .warn {
+    color: #ff9933;
+}
+
+.cr-parking-card .fine {
+    color: green;
+}
+
+.cr-parking-card .cr-switch-text {
+    margin-left: 20px;
+}

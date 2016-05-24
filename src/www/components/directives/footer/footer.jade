@@ -1,4 +1,4 @@
-.cr-footer-cont()
+.cr-footer-cont(ng-if="showFooter")
 	.layout-row.layout-align-center-center()
 		md-button.layout-row.flex.cr-footer-box.layout-align-center-center.md-raised(ng-class="{'md-primary' : page === 'index'}", ui-sref="index")
 			span.glyphicon.glyphicon-search()

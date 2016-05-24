@@ -4,14 +4,18 @@ p {
 }
 
 .cr-main.ng-enter {
-    animation: slideInRight 0.4s;
+    //animation: slideInRight 0.4s;
 }
 
 .cr-main.ng-leave {
-    animation: slideOutLeft 0.4s;
+    //animation: slideOutLeft 0.4s;
 }
 
 .cr-main md-input-container {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+div {
+    background-color: #ECEFF1;
 }
