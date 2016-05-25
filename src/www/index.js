@@ -1,5 +1,5 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
-    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMaterialDatePicker'
+    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate', 'mdPickers'
 
 ]);
 
@@ -36,8 +36,8 @@ mainApp.config(function($httpProvider, $mdThemingProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('grey')
-        .accentPalette('grey')
+        .primaryPalette('pink')
+        .accentPalette('light-blue')
         .backgroundPalette('grey')
         .warnPalette('red');
 });

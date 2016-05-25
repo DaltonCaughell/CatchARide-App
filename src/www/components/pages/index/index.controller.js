@@ -7,8 +7,8 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
     $scope.to = "";
     $scope.from = "";
 
-    $scope.date = null;
-    $scope.time = null;
+    $scope.date = new Date();
+    $scope.time = new Date();
 
     $scope.$watch('to', function() {
         if ($scope.to !== "" && $scope.to !== undefined && $scope.to !== "SCHOOL") {
@@ -34,7 +34,7 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
         }
     });
 
-    $scope.setDate = function($event) {
+    /*$scope.setDate = function($event) {
         $mdDialog.show({
             targetEvent: $event,
             templateUrl: 'components/dialogs/date/date.html',
@@ -59,6 +59,6 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
         }, function() {
 
         });
-    };
+    };*/
 
 });
