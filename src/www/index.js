@@ -1,5 +1,5 @@
 var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModalService',
-    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate', 'mdPickers'
+    'darthwade.loading', 'base64', 'ngMaterial', 'ngMessages', 'ngAnimate', 'mdPickers', 'luegg.directives'
 
 ]);
 
@@ -18,6 +18,8 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
         var requireLogin = toState.data.requireLogin;
 
         var key = Auth.getAuth();
+
+        $rootScope.scrollToBottom = false;
 
         if (requireLogin && (key === undefined || key === null || key === 0 || key === "")) {
             event.preventDefault();

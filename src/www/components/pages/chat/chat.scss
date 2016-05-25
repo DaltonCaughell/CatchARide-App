@@ -16,9 +16,38 @@
 .cr-chat-footer {
     position: fixed;
     bottom: 0px;
+    left: 0px;
     height: 60px;
     background-color: #FFFFFF;
+    width: 100%;
+}
+
+.cr-chat-footer-inputs {
     width: 800px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cr-chat-header {
+    position: fixed;
+    top: 5px;
+    width: 850px;
+}
+
+.cr-chat-header md-card {
+    background-color: #E91E63;
+    color: white;
+}
+
+.circle {
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #E91E63;
+    width: 30px;
+    height: 30px;
+    color: #E91E63;
+    padding-top: 3px;
+    padding-left: 9px;
 }
