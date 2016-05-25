@@ -71,6 +71,13 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 requireLogin: true
             }
+        }).state('info', {
+            url: "/info/:RideID",
+            templateUrl: "components/pages/info/info.html",
+            controller: "InfoController",
+            data: {
+                requireLogin: true
+            }
         }).state('default', {
             url: "*path",
             templateUrl: "components/pages/index/index.html",

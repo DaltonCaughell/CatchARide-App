@@ -5,8 +5,6 @@ mainApp.factory('crSchedule', function($http, $loading) {
     service.Search = function(isDriver, from, to, date) {
         var deferred = Q.defer();
 
-        console.log(isDriver);
-
         $http.post(Config.API.Endpoints.Schedule.Search, {
             IsDriver: isDriver,
             From: from,
@@ -26,6 +24,20 @@ mainApp.factory('crSchedule', function($http, $loading) {
             } else {
                 deferred.reject('internal_error');
             }
+        });
+
+        return deferred.promise;
+    };
+
+    service.Me = function() {
+        var deferred = Q.defer();
+
+        $http.get(Config.API.Endpoints.Schedule.Me).then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            deferred.reject('internal_error');
         });
 
         return deferred.promise;

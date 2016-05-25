@@ -7,7 +7,9 @@ div.cr-bkg-color()
 					div(class="layout-column layout-align-center-center")
 						div(class="flex-100", style="margin-bottom:5px;")
 							span() 
-								u {{ride.DateTime | date : 'MMMM d @ hh:mm a' : '-0800'}}
+								u {{ride.DateTime | date : 'MMMM d' : '-0700'}}
+								u &nbsp;&nbsp;&nbsp;&nbsp;
+								u {{ride.DateTime | date : 'Arriving @ hh:mm a' : '-0700'}}
 						div(class="flex-100")
 							span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
 		div(style="padding-bottom:80px;padding-top:80px;")
@@ -16,9 +18,9 @@ div.cr-bkg-color()
 					md-card()
 						md-card-content()
 							div(class="layout-row layout-align-center-center")
-								div(class="flex-10", style="padding-right:40px;")
+								div(class="flex-10", style="padding-right:40px;", ng-if="message.FromUserID !== user.ID")
 									.circle(ng-if="message.FromUserID === 0") A
-								div(class="flex-95")
+								div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
 									p {{message.Message}}
 		.cr-chat-footer()
 			.cr-chat-footer-inputs()
