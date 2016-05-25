@@ -1,4 +1,7 @@
-mainApp.controller("IndexController", function($scope, $http, $location, $state, $mdDialog) {
+mainApp.controller("IndexController", function($scope, $http, $location, $state, $mdDialog, crSchedule, crLoading) {
+
+    $scope.errors = {};
+
     $scope.isDriver = false;
 
     $scope.isToSchool = false;
@@ -34,31 +37,20 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
         }
     });
 
-    /*$scope.setDate = function($event) {
-        $mdDialog.show({
-            targetEvent: $event,
-            templateUrl: 'components/dialogs/date/date.html',
-            controller: 'DateDialogController',
-            locals: { date: $scope.date }
-        }).then(function(date) {
-            $scope.date = date;
-        }, function() {
-
+    $scope.search = function(from, to, date, time) {
+        var isDriver = $scope.isDriver;
+        crLoading.showWhile(crSchedule.Search(isDriver, from, to, new Date(
+            date.getFullYear(), date.getMonth(), date.getDate(),
+            time.getHours(), time.getMinutes(), time.getSeconds()))).then(function(data) {
+            $scope.errors = {};
+            $state.go('chat', { "ChatID": data.ChatID });
+            console.log(data);
+            $scope.$apply();
+        }, function(error) {
+            $scope.errors = {};
+            $scope.errors[error] = true;
+            $scope.$apply();
         });
     };
-
-    $scope.setTime = function($event) {
-        $mdDialog.show({
-            targetEvent: $event,
-            templateUrl: 'components/dialogs/time/time.html',
-            controller: 'TimeDialogController',
-            locals: { time: $scope.time }
-        }).then(function(time) {
-            console.log(time);
-            //$scope.date = date;
-        }, function() {
-
-        });
-    };*/
 
 });

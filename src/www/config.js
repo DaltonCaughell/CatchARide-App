@@ -28,6 +28,9 @@ Config.API.Endpoints = {
         Create: Config.API.Base + "/auth/create"
     },
     Parking: {
-        All: Config.API.Base + "/parking/all",
+        All: Config.API.Base + "/parking/all"
+    },
+    Schedule: {
+        Search: Config.API.Base + "/schedule/search",
     }
 };

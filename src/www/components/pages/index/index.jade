@@ -3,6 +3,19 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !isDriver}", ng-click="isDriver = false;") PASSANGER
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : isDriver}", ng-click="isDriver = true;") DRIVER
 	div(class="cr-search-body layout-column layout-align-center-center")
+		div(ng-messages="errors")
+			div(ng-message="IsDriver", style="color:red;") 
+				p Internal Error
+			div(ng-message="From", style="color:red;") 
+				p From Address Invalid
+			div(ng-message="To", style="color:red;") 
+				p To Address Invalid
+			div(ng-message="DateTime", style="color:red;") 
+				p Date Invalid
+			div(ng-message="Car", style="color:red;") 
+				p You Are Not Registered As A Driver
+			div(ng-message="internal_error", style="color:red;") 
+				p Internal Error
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
 			md-input-container(class="flex-100")
 				label() FROM
@@ -19,7 +32,7 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 				div(style="margin-left:auto;margin-right:auto;width:200px;")
 					mdp-time-picker(ng-model="time")
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
-			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100")
+			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100", ng-click="search(from, to, date, time)")
 				span(ng-if="isDriver") SCHEDULE
 				span(ng-if="!isDriver") SEARCH
 cr-footer(page="'index'")

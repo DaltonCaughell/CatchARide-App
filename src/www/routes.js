@@ -30,7 +30,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
                 requireLogin: false
             }
         }).state('chat', {
-            url: "/chat",
+            url: "/chat/:ChatID",
             templateUrl: "components/pages/chat/chat.html",
             controller: "ChatController",
             data: {
