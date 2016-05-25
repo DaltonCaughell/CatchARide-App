@@ -1,6 +1,23 @@
 back-button()
 div.cr-bkg-color()
-	div(style="margin-top:60px;")
-		md-card()
-			md-card-content()
-				p Chat Page
+	div(style="padding-top:60px;")
+		.cr-chat-cont()
+			div(style="padding-bottom:80px;")
+				div(ng-repeat="message in messages", class="layout-column", ng-class="{'layout-align-center-start' : message.FromUserID !== user.ID, 'layout-align-center-end' : message.FromUserID === user.ID}", style="width:100%;")
+					div(class="flex-50", style="width:50%;")
+						md-card()
+							md-card-content()
+								div(class="layout-row layout-align-center-center")
+									div(class="flex-10")
+										span(ng-if="message.FromUserID === 0") A
+									div(class="flex-95")
+										p {{message.Message}}
+			.cr-chat-footer()
+				.layout-row.layout-align-center-center()
+					div.flex-85.layout-align-center-center()
+						md-input-container(class="flex-100", style="width:100%;padding-right:20px;margin-top:20px;")
+							label() MESSAGE
+							input(type="text", ng-model="textMessage")
+					div.flex-15.layout-align-center-center()
+						md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ng-click="send(textMessage)", style="margin-top:-15px;")
+							span SEND

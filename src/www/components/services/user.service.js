@@ -30,6 +30,20 @@ mainApp.factory('crUser', function($http) {
         return deferred.promise;
     };
 
+    service.Me = function() {
+        var deferred = Q.defer();
+
+        $http.get(Config.API.Endpoints.User.Me).then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            deferred.reject('internal_error');
+        });
+
+        return deferred.promise;
+    };
+
     return service;
 
 });

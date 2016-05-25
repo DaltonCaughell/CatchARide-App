@@ -20,7 +20,7 @@ Config.API.Base = Config.API.Protocol + Config.API.Host + Config.API.Version;
 
 Config.API.Endpoints = {
     User: {
-        GetProductJSON: Config.API.Base + "/user/me",
+        Me: Config.API.Base + "/user/me",
         AddCar: Config.API.Base + "/user/addcar"
     },
     Auth: {
@@ -31,6 +31,10 @@ Config.API.Endpoints = {
         All: Config.API.Base + "/parking/all"
     },
     Schedule: {
-        Search: Config.API.Base + "/schedule/search",
+        Search: Config.API.Base + "/schedule/search"
+    },
+    Chat: {
+        Messages: Config.API.Base + "/chat/messages",
+        Send: Config.API.Base + "/chat/send"
     }
 };
