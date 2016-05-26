@@ -9,7 +9,9 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
             crParking.All().then(function(lots) {
                 $scope.lots = lots;
                 if ($scope.map) {
-                    $scope.markMap(lots);
+                    setTimeout(function() {
+                        $scope.markMap(lots);
+                    }, 1000);
                 }
                 $scope.$apply();
                 setTimeout(function() {
@@ -41,12 +43,14 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
 
     $scope.showMap = function() {
         $scope.map = true;
-        app.infoMapReady().then(function() {
-            crParkingMap = new google.maps.Map(document.getElementById('crParkingMap'), {
-                center: { lat: 47.655792, lng: -122.303422 },
-                zoom: 15
+        setTimeout(function() {
+            app.infoMapReady().then(function() {
+                crParkingMap = new google.maps.Map(document.getElementById('crParkingMap'), {
+                    center: { lat: 47.655792, lng: -122.303422 },
+                    zoom: 15
+                });
             });
-        });
+        }, 1000);
     };
 
 });
