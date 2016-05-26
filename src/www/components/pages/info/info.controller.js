@@ -14,7 +14,10 @@ mainApp.controller("InfoController", function($scope, $http, $location, $state, 
                 app.infoMapReady().then(function() {
                     crInfoMap = new google.maps.Map(document.getElementById('crInfoMap'), {
                         center: { lat: ride.FromLat, lng: ride.FromLon },
-                        zoom: 12
+                        zoom: 12,
+                        mapTypeControlOptions: {
+                            mapTypeIds: []
+                        }
                     });
 
                     var fromMarker = new google.maps.Marker({

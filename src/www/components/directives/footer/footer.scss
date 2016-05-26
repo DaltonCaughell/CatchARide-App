@@ -1,10 +1,11 @@
 .cr-footer-cont .cr-footer-box {
     text-align: center;
     font-weight: bold;
-    font-size: 46px;
-    height: 90px;
+    font-size: 28px;
+    height: 80px;
     margin: 0px 0px 0px 0px;
     z-index: 999;
+    padding-top: 16px;
 }
 
 .cr-footer-cont {
@@ -12,4 +13,13 @@
     bottom: 0px;
     left: 0px;
     width: 100%;
+}
+
+.cr-footer-text {
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.cr-footer-text.cr-footer-text-parking {
+    margin-top: -2px;
 }
