@@ -42,9 +42,12 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
         crLoading.showWhile(crSchedule.Search(isDriver, from, to, new Date(
             date.getFullYear(), date.getMonth(), date.getDate(),
             time.getHours(), time.getMinutes(), time.getSeconds()))).then(function(data) {
-            $scope.errors = {};
-            $state.go('chat', { "ChatID": data.ChatID });
-            console.log(data);
+            if (isDriver) {
+                $scope.errors = {};
+                $state.go('chat', { "ChatID": data.ChatID });
+            } else {
+                console.log(data);
+            }
             $scope.$apply();
         }, function(error) {
             $scope.errors = {};

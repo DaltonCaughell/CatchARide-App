@@ -9,7 +9,7 @@ div.cr-bkg-color(style="width:100%;max-width:800px;margin-left:auto;margin-right
 			div(ng-message="Email", style="color:red;") 
 				p Invalid Email
 			div(ng-message="Password", style="color:red;") 
-				p Invalid Password
+				p Password Must Be At Least 10 Characters
 			div(ng-message="Address", style="color:red;") 
 				p Invalid Address
 			div(ng-message="Phone", style="color:red;") 
@@ -30,6 +30,6 @@ div.cr-bkg-color(style="width:100%;max-width:800px;margin-left:auto;margin-right
 			input(type="text", ng-model="address", required md-maxlength="255")
 		md-input-container(style="width:80%;margin-top:5px;")
 			label() PHONE NUMBER
-			input(type="tel", ng-model="phone", required md-maxlength="10")
+			input(type="tel", ng-model="phone", required md-maxlength="20")
 		md-button.layout-align-center-center.md-primary.md-raised(style="width:80%;", ng-click="create(name, email, password, address, phone)")
 			span() CREATE

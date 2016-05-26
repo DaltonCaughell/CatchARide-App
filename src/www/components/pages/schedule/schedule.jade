@@ -15,13 +15,16 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 							div(class="flex-100")
 								span() 
 									u {{ride.DateTime | date : 'MMMM d' : '-0700'}}
-									u &nbsp;&nbsp;&nbsp;&nbsp;
-									u(ng-if="!ride.isOld") Arriving {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
-									u(ng-if="ride.isOld") Arrived {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
+									u &nbsp;
+									u(ng-if="!ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
+									u(ng-if="ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 							div(class="flex-100")
 								span(ng-if="ride.UserID !== user.ID") Driver: {{ride.User.Name}}
 								span(ng-if="ride.UserID === user.ID") Driver: You
 					div(class="flex-25")
-						md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;")
-							span CHAT
+						.layout-row.flex.layout-align-center-center()
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-50", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;margin:0px 1px 0px 0px;")
+								span.glyphicon.glyphicon-comment
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-50", ng-click="cancel(ride.ChatID)", style="width:100%;margin:0px 0px 0px 0px;")
+								span.glyphicon.glyphicon-remove
 cr-footer(page="'schedule'")

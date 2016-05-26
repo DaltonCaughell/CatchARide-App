@@ -7,8 +7,8 @@ div.cr-bkg-color()
 			div(class="flex-100", style="margin-bottom:0px;")
 				span() 
 					u {{ride.DateTime | date : 'MMMM d' : '-0700'}}
-					u &nbsp;&nbsp;&nbsp;&nbsp;
-					u {{ride.DateTime | date : 'Arriving @ hh:mm a' : '-0700'}}
+					u &nbsp;
+					u {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 			div(class="flex-100")
 				span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
 .cr-info-footer()
