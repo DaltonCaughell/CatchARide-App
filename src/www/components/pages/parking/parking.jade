@@ -1,13 +1,19 @@
 div.cr-bkg-color(style="max-width:1024px;margin-left:auto;margin-right:auto;margin-bottom:120px;")
-	br
-	md-card(ng-repeat="lot in lots" class="cr-parking-card")
-		md-card-content()
-			div(class="layout-row layout-align-center-center")
-				div(class="flex-25", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-					span {{lot.Name}}
-				div(class="flex-40", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-					span Spaces Available: {{lot.Available}}
-				div(class="flex-35", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-					md-switch(ng-model="lot.notify" aria-label="Notifications") 
-						span(class="cr-switch-text") Notifications
+	div(class="layout-row layout-align-center-center cr-type-select" style="width:390px;")
+		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !map}", ng-click="map = false;") LIST
+		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : map}", ng-click="showMap();") MAP
+	.cr-parking-cards(ng-show="!map")
+		md-card(ng-repeat="lot in lots" class="cr-parking-card")
+			md-card-content()
+				div(class="layout-row layout-align-center-center")
+					div(class="flex-25", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+						span {{lot.Name}}
+					div(class="flex-40", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+						span Spaces Available: {{lot.Available}}
+					div(class="flex-35", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+						md-switch(ng-model="lot.notify" aria-label="Notifications") 
+							span(class="cr-switch-text") Notifications
+	.cr-parking-map(ng-show="map")
+		.cr-parking-map-cont()
+			div(id="crParkingMap")
 cr-footer(page="'parking'")

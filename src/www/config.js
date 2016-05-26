@@ -32,7 +32,8 @@ Config.API.Endpoints = {
     },
     Schedule: {
         Search: Config.API.Base + "/schedule/search",
-        Me: Config.API.Base + "/schedule/me"
+        Me: Config.API.Base + "/schedule/me",
+        Ride: Config.API.Base + "/schedule/ride"
     },
     Chat: {
         Messages: Config.API.Base + "/chat/messages",

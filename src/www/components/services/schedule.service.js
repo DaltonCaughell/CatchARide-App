@@ -43,6 +43,20 @@ mainApp.factory('crSchedule', function($http, $loading) {
         return deferred.promise;
     };
 
+    service.Ride = function(RideID) {
+        var deferred = Q.defer();
+
+        $http.get(Config.API.Endpoints.Schedule.Ride + "/" + RideID).then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            deferred.reject('internal_error');
+        });
+
+        return deferred.promise;
+    };
+
     return service;
 
 });

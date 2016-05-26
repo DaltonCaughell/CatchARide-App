@@ -3,14 +3,14 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : upcoming}", ng-click="upcoming = true;") UPCOMING
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !upcoming}", ng-click="upcoming = false;") PAST
 	.cr-schedual-cards()
-		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : true", ui-sref="info({RideID : ride.ID})")
+		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : true")
 			md-card-content(style="padding:5px 0px 5px 0px;")
 				div(class="layout-row layout-align-center-center")
-					div(class="flex-10")
+					div(class="flex-15", ui-sref="info({RideID : ride.ID})")
 						span(ng-if="ride.UserID === user.ID")
 							img(src="assets/img/sports-car.png", style="width:36px;height:36px;")
 						span.glyphicon.glyphicon-user(style="font-size:36px;color:black;", ng-if="ride.UserID !== user.ID")
-					div(class="flex-60")
+					div(class="flex-50", ui-sref="info({RideID : ride.ID})")
 						div(class="layout-column layout-align-center-start")
 							div(class="flex-100")
 								span() 
@@ -21,7 +21,7 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 							div(class="flex-100")
 								span(ng-if="ride.UserID !== user.ID") Driver: {{ride.User.Name}}
 								span(ng-if="ride.UserID === user.ID") Driver: You
-					div(class="flex-20")
+					div(class="flex-25")
 						md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;")
 							span CHAT
 cr-footer(page="'schedule'")

@@ -2,4 +2,39 @@ mainApp.controller("InfoController", function($scope, $http, $location, $state, 
 
     $scope.RideID = $stateParams.RideID;
 
+    $scope.user = {};
+    $scope.ride = {};
+
+    crLoading.showWhile(crUser.Me()).then(function(user) {
+        $scope.user = user;
+        crLoading.showWhile(crSchedule.Ride($scope.RideID)).then(function(ride) {
+            console.log(ride);
+            $scope.ride = ride;
+            app.infoMapReady().then(function() {
+                crInfoMap = new google.maps.Map(document.getElementById('crInfoMap'), {
+                    center: { lat: ride.FromLat, lng: ride.FromLon },
+                    zoom: 12
+                });
+
+                var fromMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(ride.FromLat, ride.FromLon),
+                    map: crInfoMap,
+                    title: 'From'
+                });
+
+                var toMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(ride.ToLat, ride.ToLon),
+                    map: crInfoMap,
+                    title: 'To'
+                });
+            });
+            $scope.dirUrl = "https://www.google.com/maps/dir/Current+Location/" + ride.ToLat + "," + ride.ToLon;
+        });
+    });
+
+    $scope.maps = function(url) {
+        console.log(url);
+        window.open(url, '_blank');
+    };
+
 });

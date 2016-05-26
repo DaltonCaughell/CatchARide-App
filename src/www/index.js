@@ -48,6 +48,7 @@ var app = {
 
     pDevReady: Q.defer(),
     pFSReady: Q.defer(),
+    pInfoMapReady: Q.defer(),
 
     // Application Constructor
     initialize: function() {
@@ -76,6 +77,10 @@ var app = {
         return app.pDevReady.promise;
     },
 
+    infoMapReady: function() {
+        return app.pInfoMapReady.promise;
+    },
+
     fileSystemReady: function() {
         return app.pFSReady.promise;
     },
@@ -85,3 +90,10 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+var crInfoMap = {};
+var crParkingMap = {};
+
+function initMap() {
+    app.pInfoMapReady.resolve();
+}

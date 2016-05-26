@@ -1,6 +1,19 @@
+back-button()
 div.cr-bkg-color()
-	br
-	br
-	md-card()
-		md-card-content()
-			p Info
+	div.cr-info-map()
+		div(id="crInfoMap", style="width:100%;height:100%;")
+	.cr-ride-info()
+		div(class="layout-column layout-align-center-center")
+			div(class="flex-100", style="margin-bottom:0px;")
+				span() 
+					u {{ride.DateTime | date : 'MMMM d' : '-0700'}}
+					u &nbsp;&nbsp;&nbsp;&nbsp;
+					u {{ride.DateTime | date : 'Arriving @ hh:mm a' : '-0700'}}
+			div(class="flex-100")
+				span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
+.cr-info-footer()
+	.cr-info-footer-inner()
+		div(class="layout-row layout-align-center-center")
+			div(class="flex-100")
+				md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ng-click="maps(dirUrl)", style="width:100%;margin:0px 0px 5px 0px;")
+					span GO TO MAPS
