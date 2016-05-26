@@ -46,7 +46,7 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
         setTimeout(function() {
             app.infoMapReady().then(function() {
                 crParkingMap = new google.maps.Map(document.getElementById('crParkingMap'), {
-                    center: { lat: 47.655792, lng: -122.303422 },
+                    center: { lat: 47.658995, lng: -122.304483 },
                     zoom: 15
                 });
             });

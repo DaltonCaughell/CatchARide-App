@@ -23,7 +23,8 @@
 }
 
 .cr-chat-footer-inputs {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: auto;
@@ -32,8 +33,9 @@
 
 .cr-chat-header {
     position: fixed;
-    top: 5px;
-    width: 850px;
+    top: 40px;
+    max-width: 850px;
+    width: 100%;
 }
 
 .cr-chat-header md-card {

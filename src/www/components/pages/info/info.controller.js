@@ -10,24 +10,26 @@ mainApp.controller("InfoController", function($scope, $http, $location, $state, 
         crLoading.showWhile(crSchedule.Ride($scope.RideID)).then(function(ride) {
             console.log(ride);
             $scope.ride = ride;
-            app.infoMapReady().then(function() {
-                crInfoMap = new google.maps.Map(document.getElementById('crInfoMap'), {
-                    center: { lat: ride.FromLat, lng: ride.FromLon },
-                    zoom: 12
-                });
+            setTimeout(function() {
+                app.infoMapReady().then(function() {
+                    crInfoMap = new google.maps.Map(document.getElementById('crInfoMap'), {
+                        center: { lat: ride.FromLat, lng: ride.FromLon },
+                        zoom: 12
+                    });
 
-                var fromMarker = new google.maps.Marker({
-                    position: new google.maps.LatLng(ride.FromLat, ride.FromLon),
-                    map: crInfoMap,
-                    title: 'From'
-                });
+                    var fromMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(ride.FromLat, ride.FromLon),
+                        map: crInfoMap,
+                        title: 'From'
+                    });
 
-                var toMarker = new google.maps.Marker({
-                    position: new google.maps.LatLng(ride.ToLat, ride.ToLon),
-                    map: crInfoMap,
-                    title: 'To'
+                    var toMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(ride.ToLat, ride.ToLon),
+                        map: crInfoMap,
+                        title: 'To'
+                    });
                 });
-            });
+            }, 1000);
             $scope.dirUrl = "https://www.google.com/maps/dir/Current+Location/" + ride.ToLat + "," + ride.ToLon;
         });
     });
