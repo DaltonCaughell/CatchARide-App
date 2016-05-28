@@ -20,8 +20,8 @@ div.cr-bkg-color()
 							div()
 								div(class="layout-row layout-align-center-center")
 									div(class="flex-10", style="padding-right:50px;", ng-if="message.FromUserID !== user.ID")
-										.circle(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
-										.circle(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
+										.circle.flex(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
+										.circle.flex(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
 									div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
 										p {{message.Message}}
 				div(class="flex-50", style="", ng-if="message.Type === 'ride_request' && !message.Ack")

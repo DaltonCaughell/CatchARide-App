@@ -24,7 +24,7 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
         function(next) {
             $scope.reloadChat().then(function() {
                 setTimeout(function() {
-                    next();
+                    //next();
                 }, 5000);
             });
         },
