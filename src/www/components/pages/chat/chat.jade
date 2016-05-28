@@ -33,7 +33,7 @@ div.cr-bkg-color()
 										.circle() A
 									div.flex-60()
 										p {{message.Message}}
-											span(style="cursor: pointer;", ng-click="moreInfo();") &nbsp;
+											span(style="cursor: pointer;", ui-sref="user-info({UserID : message.FromUserID, RideID : ride.ID})") &nbsp;
 												u More Info
 									div.flex-15.layout-row.layout-align-center-center()
 										md-button.layout-row.flex.layout-align-center-center.flex-100(style="font-size:26px;", ng-click="accept(ride.ID, message.ID)")
