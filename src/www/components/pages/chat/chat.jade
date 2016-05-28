@@ -12,14 +12,15 @@ div.cr-bkg-color()
 								u {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 						div(class="flex-100")
 							span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
-		div(style="padding-bottom:80px;padding-top:120px;")
+		.cr-chats(scroll-glue-bottom="")
 			div(ng-repeat="message in messages", class="layout-column", ng-class="{'layout-align-center-start' : message.FromUserID !== user.ID, 'layout-align-center-end' : message.FromUserID === user.ID}", style="width:100%;")
 				div(class="flex-50", style="")
 					md-card()
 						md-card-content()
 							div(class="layout-row layout-align-center-center")
 								div(class="flex-10", style="padding-right:40px;", ng-if="message.FromUserID !== user.ID")
-									.circle(ng-if="message.FromUserID === 0") A
+									.circle(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
+									.circle(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
 								div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
 									p {{message.Message}}
 		.cr-chat-footer()

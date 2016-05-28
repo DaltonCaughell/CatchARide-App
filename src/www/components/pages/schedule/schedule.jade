@@ -18,6 +18,7 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 									u &nbsp;
 									u(ng-if="!ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 									u(ng-if="ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
+									span(ng-if="ride.UserID !== user.ID && ride.Approved === false", style="color:red;") &nbsp;(Not Approved)  
 							div(class="flex-100")
 								span(ng-if="ride.UserID !== user.ID") Driver: {{ride.User.Name}}
 								span(ng-if="ride.UserID === user.ID") Driver: You

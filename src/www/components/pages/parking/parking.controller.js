@@ -2,9 +2,14 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
 
     $scope.map = false;
 
+    $scope.poll = true;
+
     var markers = [];
 
-    async.forever(
+    async.whilst(
+        function() {
+            return $scope.poll;
+        },
         function(next) {
             crParking.All().then(function(lots) {
                 $scope.lots = lots;
@@ -52,5 +57,9 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
             });
         }, 1000);
     };
+
+    $scope.$on('$destroy', function() {
+        $scope.poll = false;
+    });
 
 });

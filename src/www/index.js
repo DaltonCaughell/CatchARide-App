@@ -20,8 +20,6 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
 
         var key = Auth.getAuth();
 
-        $rootScope.scrollToBottom = false;
-
         if (requireLogin && (key === undefined || key === null || key === 0 || key === "")) {
             event.preventDefault();
             $state.go('entry');

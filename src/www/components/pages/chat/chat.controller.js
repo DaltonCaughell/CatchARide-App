@@ -1,13 +1,34 @@
 mainApp.controller("ChatController", function($rootScope, $scope, $http, $location, $state, $stateParams, crChat, crLoading, crUser) {
 
-    $rootScope.scrollToBottom = true;
+    $scope.poll = true;
 
     $scope.ChatID = $stateParams.ChatID;
 
-    crLoading.showWhile(crChat.Messages($scope.ChatID)).then(function(chat) {
-        console.log(chat.Ride);
-        $scope.messages = chat.Messages;
-        $scope.ride = chat.Ride;
+    async.whilst(
+        function() {
+            return $scope.poll;
+        },
+        function(next) {
+            crChat.Messages($scope.ChatID).then(function(chat) {
+                console.log(chat);
+                $scope.messages = chat.Messages;
+                $scope.ride = chat.Ride;
+                $scope.$apply();
+                setTimeout(function() {
+                    next();
+                }, 5000);
+            }, function() {
+                setTimeout(function() {
+                    next();
+                }, 5000);
+            });
+        },
+        function(err) {
+
+        });
+
+    $scope.$on('$destroy', function() {
+        $scope.poll = false;
     });
 
     crLoading.showWhile(crUser.Me()).then(function(user) {

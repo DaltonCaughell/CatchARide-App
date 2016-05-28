@@ -7,7 +7,7 @@ html(ng-app='mainApp', manifest="app.manifest", id="mainApp", ng-cloak)
 		link(rel='stylesheet', type='text/css', href='bundle.min.css')
 		link(rel='icon', type='image/png', href='assets/img/logo.png')
 		title Catch A Ride
-	body(style="background-color:#ECEFF1;", scroll-glue-bottom="scrollToBottom")
+	body(style="background-color:#ECEFF1;")
 		.app(style='width: 100%; background-color:#ECEFF1;')
 			div.cr-main(style='height: 100%; width: 100%;', ui-view='')
 		div(dw-loading="loadingOverlay", dw-loading-options="{text: ''}", style="width:100%;height:100%;position:fixed;top:0px;left:0px;", ng-if="crLoadingOn")
