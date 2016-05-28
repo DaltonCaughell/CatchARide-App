@@ -16,15 +16,15 @@ back-button()
 		md-card(ng-repeat="ride in rides | orderBy : '-DateTime' : false")
 			md-card-content()
 				div(class="layout-row layout-align-center-center")
-					div(class="flex-20")
+					div(class="flex-20", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
 						span() {{ride.User.Name}}
-					div(class="flex-30")
+					div(class="flex-30", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
 						div(class="layout-column layout-align-center-start")
 							div(class="flex-100")
 								span() 
 									span() Arrive at &nbsp;
 									u() {{ride.DateTime | date : 'hh:mm a' : '-0700'}}
-					div(class="flex-30")
+					div(class="flex-30", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
 						span() {{ride.DistFrom | number: 1 }} Miles From You
 					div(class="flex-20", style="")
 						md-button.layout-row.flex.layout-align-center-center(class="flex-100",style="font-size:26px;", ng-click="join(ride.ID)")

@@ -3,5 +3,27 @@ div.cr-user-info-map()
 	div(id="crUserInfoMap", style="width:100%;height:100%;")
 .cr-user-ride-info()
 	div(class="layout-column layout-align-center-center")
-		div(class="flex-100", style="margin-bottom:0px;")
+		div(class="flex-100", style="margin-bottom:0px;") 
+			p 
+				span(ng-if="info.IsDriver") Driving From:
+				span(ng-if="!info.IsDriver") Riding From:
+				span &nbsp;{{info.From}}
 		div(class="flex-100")
+			p To: {{info.To}}
+.cr-user-ride-info-body()
+	.cr-info-name() {{info.User.Name}}
+	div(style="text-align:left;display:inline-block;")
+		p() Rating:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			span.glyphicon.glyphicon-star(ng-repeat="n in range(1,info.Rating)")
+			span.glyphicon.glyphicon-star-empty(ng-repeat="i in range(1,5-info.Rating)")
+		p() Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="tel:{{info.User.Phone}}"  data-rel="external") {{info.User.Phone}}
+	.cr-driver-info(ng-if="info.IsDriver")
+		.cr-info-name() Vehicle Info
+		div(style="text-align:left;display:inline-block;")
+			p() Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				span {{info.Car.Brand}} {{info.Car.CarModel}}
+			p() License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				span {{info.Car.LicensePlateNumber}}
+			p() Total Seats:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				span {{info.Car.Seats}}

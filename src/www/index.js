@@ -27,6 +27,15 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
 
     });
 
+    $rootScope.range = function(min, max, step) {
+        step = step || 1;
+        var input = [];
+        for (var i = min; i <= max; i += step) {
+            input.push(i);
+        }
+        return input;
+    };
+
 });
 
 mainApp.config(function($httpProvider, $mdThemingProvider) {
@@ -92,6 +101,7 @@ var app = {
 
 var crInfoMap = {};
 var crParkingMap = {};
+var crUserInfoMap = {};
 
 function initMap() {
     app.pInfoMapReady.resolve();
