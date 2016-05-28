@@ -71,9 +71,33 @@ mainApp.factory('crSchedule', function($http, $loading) {
         return deferred.promise;
     };
 
-    service.Join = function(RideID) {
+    service.Join = function(RideID, SearchID) {
         var deferred = Q.defer();
         $http.get(Config.API.Endpoints.Schedule.Join + "/" + RideID).then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            deferred.reject('internal_error');
+        });
+        return deferred.promise;
+    };
+
+    service.Accept = function(RideID, MessageID) {
+        var deferred = Q.defer();
+        $http.get(Config.API.Endpoints.Schedule.AcceptPassenger + "/" + RideID + "/" + MessageID).then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            deferred.reject('internal_error');
+        });
+        return deferred.promise;
+    };
+
+    service.Reject = function(RideID, MessageID) {
+        var deferred = Q.defer();
+        $http.get(Config.API.Endpoints.Schedule.RejectPassenger + "/" + RideID + "/" + MessageID).then(function(res) {
             var data = res.data;
             deferred.resolve(data);
         }, function(res) {

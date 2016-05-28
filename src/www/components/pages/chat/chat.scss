@@ -24,11 +24,16 @@
 
 .cr-chat-footer-inputs {
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
+}
+
+.cr-chat-footer-inputs .layout-row {
+    height: 100%;
 }
 
 .cr-chat-header {
@@ -58,7 +63,7 @@
     position: absolute;
     width: 100%;
     max-width: 800px;
-    overflow-y: scroll;
+    overflow-y: auto;
     left: 0px;
     right: 0px;
     margin-left: auto;

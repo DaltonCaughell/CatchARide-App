@@ -11,25 +11,39 @@ div.cr-bkg-color()
 								u &nbsp;
 								u {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 						div(class="flex-100")
-							span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
+							span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Seats}}
 		.cr-chats(scroll-glue-bottom="")
 			div(ng-repeat="message in messages", class="layout-column", ng-class="{'layout-align-center-start' : message.FromUserID !== user.ID, 'layout-align-center-end' : message.FromUserID === user.ID}", style="width:100%;")
-				div(class="flex-50", style="")
+				div(class="flex-50", style="", ng-if="message.Type === ''")
 					md-card()
 						md-card-content()
-							div(class="layout-row layout-align-center-center")
-								div(class="flex-10", style="padding-right:40px;", ng-if="message.FromUserID !== user.ID")
-									.circle(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
-									.circle(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
-								div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
-									p {{message.Message}}
+							div()
+								div(class="layout-row layout-align-center-center")
+									div(class="flex-10", style="padding-right:50px;", ng-if="message.FromUserID !== user.ID")
+										.circle(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
+										.circle(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
+									div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
+										p {{message.Message}}
+				div(class="flex-50", style="", ng-if="message.Type === 'ride_request' && !message.Ack")
+					md-card()
+						md-card-content()
+							div()
+								div(class="layout-row layout-align-center-center")
+									div(class="flex-10", style="padding-right:50px;")
+										.circle() A
+									div.flex-60()
+										p {{message.Message}}
+									div.flex-15.layout-row.layout-align-center-center()
+										md-button.layout-row.flex.layout-align-center-center.flex-100(style="font-size:26px;", ng-click="accept(ride.ID, message.ID)")
+											span.glyphicon.glyphicon-ok(style="color:green;")
+									div.flex-15.layout-row.layout-align-center-center()
+										md-button.layout-row.flex.layout-align-center-center.flex-100(style="font-size:26px;", ng-click="reject(ride.ID, message.ID)")
+											span.glyphicon.glyphicon-remove(style="color:red;")
 		.cr-chat-footer()
 			.cr-chat-footer-inputs()
 				.layout-row.layout-align-center-center()
-					div.flex-60.layout-align-center-center()
-						md-input-container(class="flex-100", style="width:100%;padding-right:20px;margin-top:20px;")
-							label() MESSAGE
-							input(type="text", ng-model="textMessage")
-					div.flex-15.layout-align-center-center()
-						md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ng-click="send(textMessage)", style="margin-top:-15px;")
+					div.flex-70.layout-row.layout-align-center-center()
+						input(type="text", ng-model="textMessage", style="width:100%;height:36px;", ng-disabled="!ride.Approved", ng-keyup="$event.keyCode == 13 && send(textMessage)")
+					div.flex-30.layout-align-end-end(style="text-align:center;")
+						md-button.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ng-click="send(textMessage)", style="margin-top:0px;", ng-disabled="!ride.Approved")
 							span SEND

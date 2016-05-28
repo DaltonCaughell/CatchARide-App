@@ -16,7 +16,7 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
                 if ($scope.map) {
                     setTimeout(function() {
                         $scope.markMap(lots);
-                    }, 1000);
+                    }, 10);
                 }
                 $scope.$apply();
                 setTimeout(function() {
@@ -55,7 +55,7 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
                     zoom: 15
                 });
             });
-        }, 1000);
+        }, 0);
     };
 
     $scope.$on('$destroy', function() {

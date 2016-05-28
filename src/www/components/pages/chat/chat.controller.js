@@ -1,23 +1,28 @@
-mainApp.controller("ChatController", function($rootScope, $scope, $http, $location, $state, $stateParams, crChat, crLoading, crUser) {
+mainApp.controller("ChatController", function($rootScope, $scope, $http, $location, $state, $stateParams, crChat, crLoading, crUser, crSchedule) {
 
     $scope.poll = true;
 
     $scope.ChatID = $stateParams.ChatID;
+
+    $scope.reloadChat = function() {
+        var deferred = Q.defer();
+        crChat.Messages($scope.ChatID).then(function(chat) {
+            $scope.messages = chat.Messages;
+            $scope.ride = chat.Ride;
+            $scope.$apply();
+            deferred.resolve();
+        }, function() {
+            deferred.resolve();
+        });
+        return deferred.promise;
+    };
 
     async.whilst(
         function() {
             return $scope.poll;
         },
         function(next) {
-            crChat.Messages($scope.ChatID).then(function(chat) {
-                console.log(chat);
-                $scope.messages = chat.Messages;
-                $scope.ride = chat.Ride;
-                $scope.$apply();
-                setTimeout(function() {
-                    next();
-                }, 5000);
-            }, function() {
+            $scope.reloadChat().then(function() {
                 setTimeout(function() {
                     next();
                 }, 5000);
@@ -40,6 +45,18 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
         crChat.Send($scope.ChatID, message).then(function(message) {
             $scope.messages.push(message);
             $scope.$apply();
+        });
+    };
+
+    $scope.accept = function(RideID, MessageID) {
+        crLoading.showWhile(crSchedule.Accept(RideID, MessageID)).then(function() {
+            crLoading.showWhile($scope.reloadChat());
+        });
+    };
+
+    $scope.reject = function(RideID, MessageID) {
+        crLoading.showWhile(crSchedule.Reject(RideID, MessageID)).then(function() {
+            crLoading.showWhile($scope.reloadChat());
         });
     };
 

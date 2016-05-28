@@ -16,7 +16,7 @@ mainApp.controller("DriversController", function($scope, $http, $location, $stat
     });
 
     $scope.join = function(RideID) {
-        crLoading.showWhile(crSchedule.Join(RideID)).then(function(data) {
+        crLoading.showWhile(crSchedule.Join(RideID, $scope.SearchID)).then(function(data) {
             console.log(data);
             $state.go('chat', { 'ChatID': data.Ride.ChatID });
         });

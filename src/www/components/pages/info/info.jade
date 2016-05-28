@@ -10,7 +10,20 @@ div.cr-bkg-color()
 					u &nbsp;
 					u {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 			div(class="flex-100")
-				span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Car.Seats}}
+				span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Seats}}
+	.cr-info-p-cards()
+		div(ng-if="!ride.Passengers.length", style="width:100%;text-align:center;margin-top:20px;")
+			p No Passengers At This Time
+		md-card(ng-repeat="p in ride.Passengers")
+			md-card-content()
+				div(class="layout-row layout-align-center-center")
+					.flex-20
+						span() {{p.User.Name}}
+					.flex-40
+						span(ng-if="p.Details.To !== 'SCHOOL'") {{p.Details.To}}
+						span(ng-if="p.Details.From !== 'SCHOOL'") {{p.Details.From}}
+					.flex-40
+						span() {{p.DistFrom | number: 1 }} Miles
 .cr-info-footer()
 	.cr-info-footer-inner()
 		div(class="layout-row layout-align-center-center")
