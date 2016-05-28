@@ -78,6 +78,13 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 requireLogin: true
             }
+        }).state('user-info', {
+            url: "/user-info/:UserID",
+            templateUrl: "components/pages/user-info/user-info.html",
+            controller: "UserInfoController",
+            data: {
+                requireLogin: true
+            }
         }).state('default', {
             url: "*path",
             templateUrl: "components/pages/index/index.html",

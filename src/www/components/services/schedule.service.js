@@ -73,7 +73,7 @@ mainApp.factory('crSchedule', function($http, $loading) {
 
     service.Join = function(RideID, SearchID) {
         var deferred = Q.defer();
-        $http.get(Config.API.Endpoints.Schedule.Join + "/" + RideID).then(function(res) {
+        $http.get(Config.API.Endpoints.Schedule.Join + "/" + RideID + "/" + SearchID).then(function(res) {
             var data = res.data;
             deferred.resolve(data);
         }, function(res) {

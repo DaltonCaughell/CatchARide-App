@@ -1,0 +1,49 @@
+.cr-info-footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.cr-info-footer-inner {
+    width: 100%;
+    max-width: 800px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cr-info-map {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    height: 200px;
+}
+
+.cr-ride-info {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    height: 50px;
+    background-color: #E91E63;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.cr-info-p-cards {
+    position: absolute;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 260px;
+    height: 100%;
+    padding-bottom: 140px;
+}
