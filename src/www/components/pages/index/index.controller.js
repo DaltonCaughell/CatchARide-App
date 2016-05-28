@@ -46,7 +46,7 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
                 $scope.errors = {};
                 $state.go('chat', { "ChatID": data.ChatID });
             } else {
-                console.log(data);
+                $state.go('drivers', { 'SearchID': data.ID });
             }
             $scope.$apply();
         }, function(error) {

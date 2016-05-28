@@ -2,7 +2,7 @@ var Config = {
     API: {
         Protocol: "http://",
         //Host: "localhost:3000",
-        Host: "192.168.1.9:3000",
+        Host: "192.168.1.6:3000",
         //Host: "app.daltoncaughell.com:3000",
         Version: "/api/v1",
         Base: ""
@@ -33,7 +33,9 @@ Config.API.Endpoints = {
     Schedule: {
         Search: Config.API.Base + "/schedule/search",
         Me: Config.API.Base + "/schedule/me",
-        Ride: Config.API.Base + "/schedule/ride"
+        Ride: Config.API.Base + "/schedule/ride",
+        Available: Config.API.Base + "/schedule/available",
+        Join: Config.API.Base + "/schedule/join"
     },
     Chat: {
         Messages: Config.API.Base + "/chat/messages",

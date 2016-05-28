@@ -6,6 +6,7 @@ var mainApp = angular.module('mainApp', ['ngCordova', 'ui.router', 'angularModal
 mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
 
     $rootScope.Config = Config;
+    $rootScope.crLoadingOn = false;
 
     $animate.enabled(false);
 

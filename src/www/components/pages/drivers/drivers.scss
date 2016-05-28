@@ -1,1 +1,30 @@
+.cr-drivers-header {
+    width: 100%;
+    position: fixed;
+    top: 40px;
+    max-width: 850px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px;
+}
 
+.cr-drivers-header md-card {
+    background-color: #E91E63;
+    color: white;
+}
+
+.cr-drivers-list {
+    position: absolute;
+    width: 100%;
+    max-width: 850px;
+    overflow-y: scroll;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 130px;
+    height: 100%;
+    padding-bottom: 140px;
+}

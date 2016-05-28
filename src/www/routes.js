@@ -37,7 +37,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
                 requireLogin: true
             }
         }).state('drivers', {
-            url: "/drivers",
+            url: "/drivers/:SearchID",
             templateUrl: "components/pages/drivers/drivers.html",
             controller: "DriversController",
             data: {

@@ -1,7 +1,31 @@
-div.cr-bkg-color()
-	br
-	br
-	md-card()
-		md-card-content()
-			p Drivers Page
-cr-footer()
+back-button()
+.cr-drivers-page.cr-bkg-color()
+	.cr-drivers-header(style="")
+		md-card.md-primary.md-hue-1()
+			md-card-content(style="padding:5px 0px 5px 0px;")
+				div(class="layout-column layout-align-center-center")
+					div(class="flex-100", style="margin-bottom:5px;")
+						span(ng-if="search.To === 'SCHOOL'") To School
+						span(ng-if="search.From === 'SCHOOL'") From School
+					div(class="flex-100")
+						span() 
+							u {{search.DateTime | date : 'MMMM d' : '-0700'}}
+							u &nbsp;
+							u {{search.DateTime | date : '@ hh:mm a' : '-0700'}}
+	.cr-drivers-list()
+		md-card(ng-repeat="ride in rides | orderBy : '-DateTime' : false")
+			md-card-content()
+				div(class="layout-row layout-align-center-center")
+					div(class="flex-20")
+						span() {{ride.User.Name}}
+					div(class="flex-30")
+						div(class="layout-column layout-align-center-start")
+							div(class="flex-100")
+								span() 
+									span() Arrive at &nbsp;
+									u() {{ride.DateTime | date : 'hh:mm a' : '-0700'}}
+					div(class="flex-30")
+						span() {{ride.DistFrom | number: 1 }} Miles From You
+					div(class="flex-20", style="")
+						md-button.layout-row.flex.layout-align-center-center(class="flex-100",style="font-size:26px;", ng-click="join(ride.ID)")
+								span.glyphicon.glyphicon-ok-circle()
