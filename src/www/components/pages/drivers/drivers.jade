@@ -29,3 +29,5 @@ back-button()
 					div(class="flex-20", style="")
 						md-button.layout-row.flex.layout-align-center-center(class="flex-100",style="font-size:26px;", ng-click="join(ride.ID)")
 								span.glyphicon.glyphicon-ok-circle()
+		div(ng-if="!rides.length", style="width:100%;text-align:center;")
+			span() Sorry, There Are No Drivers Arriving At Or Arround This Time
