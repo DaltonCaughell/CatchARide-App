@@ -11,7 +11,7 @@ mainApp.controller("ScheduleController", function($scope, $http, $location, $sta
             var date = new Date();
             rides.forEach(function(ride) {
                 var rideDate = new Date(ride.DateTime);
-                if (rideDate.getTime() < date.getTime()) {
+                if (rideDate.getTime() < date.getTime() || ride.Canceled) {
                     ride.isOld = true;
                 } else {
                     ride.isOld = false;
