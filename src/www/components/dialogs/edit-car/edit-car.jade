@@ -1,0 +1,32 @@
+md-dialog.cr-car-edit-dlg()
+	md-dialog-content()
+		.layout-column.layout-align-center-center()
+			div(ng-messages="errors")
+				br
+				div(ng-message="Brand", style="color:red;") 
+					p Invalid Brand
+				div(ng-message="CarModel", style="color:red;") 
+					p Invalid Model
+				div(ng-message="Seats", style="color:red;") 
+					p Invalid Number of Seats
+				div(ng-message="LicensePlateNumber", style="color:red;") 
+					p Invalid License Plate Number
+				div(ng-message="internal_error", style="color:red;") 
+					p Internal Error
+			md-input-container(style="width:80%;")
+				label() CAR BRAND
+				input(type="text", ng-model="car.Brand", required md-maxlength="255")
+			md-input-container(style="width:80%;margin-top:5px;")
+				label() MODEL
+				input(type="text", ng-model="car.CarModel", required md-maxlength="255")
+			md-input-container(style="width:80%;margin-top:5px;")
+				label() # OF EXTRA SEATS
+				input(type="text", ng-model="car.Seats", required md-maxlength="255")
+			md-input-container(style="width:80%;margin-top:5px;")
+				label() LICENSE PLATE NUMBER
+				input(type="text", ng-model="car.LicensePlateNumber", required md-maxlength="255")
+	md-dialog-actions()
+		md-button.md-raised(ng-click="close()")
+			span CANCEL
+		md-button.md-raised(ng-click="edit(car)")
+			span SET

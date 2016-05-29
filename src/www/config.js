@@ -21,11 +21,14 @@ Config.API.Base = Config.API.Protocol + Config.API.Host + Config.API.Version;
 Config.API.Endpoints = {
     User: {
         Me: Config.API.Base + "/user/me",
-        AddCar: Config.API.Base + "/user/addcar"
+        AddCar: Config.API.Base + "/user/addcar",
+        Update: Config.API.Base + "/user/me",
+        UpdateCar: Config.API.Base + "/user/car"
     },
     Auth: {
         Login: Config.API.Base + "/auth/login",
-        Create: Config.API.Base + "/auth/create"
+        Create: Config.API.Base + "/auth/create",
+        Password: Config.API.Base + "/auth/password"
     },
     Parking: {
         All: Config.API.Base + "/parking/all"

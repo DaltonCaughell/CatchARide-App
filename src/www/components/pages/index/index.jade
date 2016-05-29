@@ -28,10 +28,10 @@ div.cr-bkg-color(style="max-width:800px;margin-left:auto;margin-right:auto;paddi
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
 			div(class="flex-50 layout-align-center-center")
 				div(style="margin-left:auto;margin-right:auto;width:200px;")
-					mdp-date-picker(mdp-placeholder="Date", ng-model="date")
+					mdp-date-picker(mdp-placeholder="Arrival Date", ng-model="date")
 			div(class="flex-50 layout-align-center-center")
 				div(style="margin-left:auto;margin-right:auto;width:200px;")
-					mdp-time-picker(ng-model="time")
+					mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="time")
 		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
 			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100", ng-click="search(from, to, date, time)")
 				span(ng-if="isDriver") SCHEDULE

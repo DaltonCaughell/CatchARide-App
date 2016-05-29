@@ -69,6 +69,33 @@ mainApp.factory('Auth', function($http, $loading) {
         return deferred.promise;
     };
 
+    service.ChangePassword = function(password) {
+
+        var deferred = Q.defer();
+
+        var p = $http.post(Config.API.Endpoints.Auth.Password, {
+            Password: password
+        });
+
+        p.then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            if (res.status === 422) {
+                if (data.length > 0) {
+                    deferred.reject(data[0].fieldNames[0]);
+                } else {
+                    deferred.reject('internal_error');
+                }
+            } else {
+                deferred.reject('internal_error');
+            }
+        });
+
+        return deferred.promise;
+    };
+
     return service;
 
 });

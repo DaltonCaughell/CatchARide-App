@@ -14,7 +14,7 @@ div.cr-bkg-color()
 	.cr-info-p-cards()
 		div(ng-if="!ride.Passengers.length", style="width:100%;text-align:center;margin-top:20px;")
 			p No Passengers At This Time
-		md-card(ng-repeat="p in ride.Passengers")
+		md-card(ng-repeat="p in ride.Passengers", ui-sref="user-info({'RideID' : ride.ID, 'UserID': p.User.ID})")
 			md-card-content()
 				div(class="layout-row layout-align-center-center")
 					.flex-20
