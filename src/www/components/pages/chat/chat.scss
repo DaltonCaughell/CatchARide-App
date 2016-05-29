@@ -74,3 +74,22 @@
     height: 100%;
     padding-bottom: 210px;
 }
+
+.cr-chat-footer-inputs button {
+    margin: 0px;
+    padding: 0px;
+}
+
+.cr-chat-footer-inputs .cr-cash-button {
+    background-color: #4CAF50;
+    height: 36px;
+    margin-right: 5px;
+}
+
+.cr-chat-footer-inputs .cr-chat-send {
+    margin-left: 5px;
+}
+
+.cr-chat-footer-inputs .cr-cash-button:not([disabled]):hover {
+    background-color: #C8E6C9;
+}

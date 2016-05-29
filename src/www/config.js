@@ -47,6 +47,9 @@ Config.API.Endpoints = {
     Chat: {
         Messages: Config.API.Base + "/chat/messages",
         Send: Config.API.Base + "/chat/send",
-        Rate: Config.API.Base + "/chat/rate"
+        Rate: Config.API.Base + "/chat/rate",
+        RequestCash: Config.API.Base + "/chat/requestcash",
+        CashRequestAccept: Config.API.Base + "/chat/cashrequestaccept",
+        CashRequestReject: Config.API.Base + "/chat/cashrequestreject"
     }
 };

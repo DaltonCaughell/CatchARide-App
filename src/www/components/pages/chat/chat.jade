@@ -54,11 +54,33 @@ div.cr-bkg-color()
 										p.cr-sett-rat() Rating:&nbsp;
 											span.glyphicon.glyphicon-star(ng-repeat="i in range(1,message.Rating.Rating)", ng-click="rate(message, i)")
 											span.glyphicon.glyphicon-star-empty(ng-repeat="i in range(1,5-message.Rating.Rating)", ng-click="rate(message, i+message.Rating.Rating)")
+				div(class="flex-50", style="", ng-if="message.Type === 'cash_req' && !message.Ack")
+					md-card()
+						md-card-content()
+							div()
+								div(class="layout-row layout-align-center-center")
+									div.flex-10(style="padding-right:50px;")
+										.circle() A
+									div.flex-60()
+										p {{message.Message}}
+									div.flex-15.layout-row.layout-align-center-center()
+										md-button.layout-row.flex.layout-align-center-center.flex-100(style="font-size:26px;", ng-click="acceptCash(message.ID)")
+											span.glyphicon.glyphicon-ok(style="color:green;")
+									div.flex-15.layout-row.layout-align-center-center()
+										md-button.layout-row.flex.layout-align-center-center.flex-100(style="font-size:26px;", ng-click="rejectCash(message.ID)")
+											span.glyphicon.glyphicon-remove(style="color:red;")
 		.cr-chat-footer()
 			.cr-chat-footer-inputs()
 				.layout-row.layout-align-center-center()
+					div.flex-10.layout-row.layout-align-center-center()
+						.layout-row.flex.layout-align-center-center()
+							md-button.layout-row.flex.layout-align-center-center.cr-cash-button(class="flex-100", ng-click="reqCash()")
+								span.glyphicon.glyphicon-usd
 					div.flex-70.layout-row.layout-align-center-center()
-						input(type="text", ng-model="textMessage", style="width:100%;height:36px;", ng-disabled="!ride.Approved", ng-keyup="$event.keyCode == 13 && send(textMessage)")
-					div.flex-30.layout-align-end-end(style="text-align:center;")
-						md-button.flex.layout-align-center-center.md-raised.md-primary(class="flex-100", ng-click="send(textMessage)", style="margin-top:0px;", ng-disabled="!ride.Approved")
-							span SEND
+						input(type="text", ng-model="textMessage", style="width:100%;height:36px;", 
+						ng-disabled="!ride.Approved", ng-keyup="$event.keyCode == 13 && send(textMessage)", focus-me="setChatFocus")
+					div.flex-20.layout-align-end-end(style="text-align:center;")
+						.layout-row.flex.layout-align-center-center()
+							md-button.flex.layout-align-center-center.md-raised.md-primary.cr-chat-send(class="flex-100", 
+							ng-click="send(textMessage)", style="margin-top:0px;", ng-disabled="!ride.Approved")
+								span SEND

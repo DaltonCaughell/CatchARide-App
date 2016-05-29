@@ -42,10 +42,22 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
 
     $scope.send = function(message) {
         $scope.textMessage = "";
-        crChat.Send($scope.ChatID, message).then(function(message) {
-            $scope.messages.push(message);
-            $scope.$apply();
-        });
+        if (message.indexOf("request: $") !== -1) {
+            var start = message.indexOf("$");
+            var amount = message.substring(start + 1, message.length);
+            if (!isNaN(amount)) {
+                amount = Number(amount);
+                crChat.RequestCash($scope.ChatID, amount).then(function(message) {
+                    $scope.messages.push(message);
+                    $scope.$apply();
+                });
+            }
+        } else {
+            crChat.Send($scope.ChatID, message).then(function(message) {
+                $scope.messages.push(message);
+                $scope.$apply();
+            });
+        }
     };
 
     $scope.accept = function(RideID, MessageID) {
@@ -64,6 +76,23 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
         console.log(rating);
         crLoading.showWhile(crChat.Rate(message.ID, message.Rating.ID, rating)).then(function(data) {
             message.Rating = data;
+        });
+    };
+
+    $scope.reqCash = function() {
+        $scope.textMessage = "request: $";
+        $scope.setChatFocus = true;
+    };
+
+    $scope.acceptCash = function(MessageID) {
+        crLoading.showWhile(crChat.CashRequestAccept(MessageID)).then(function() {
+            crLoading.showWhile($scope.reloadChat());
+        });
+    };
+
+    $scope.rejectCash = function(MessageID) {
+        crLoading.showWhile(crChat.CashRequestReject(MessageID)).then(function() {
+            crLoading.showWhile($scope.reloadChat());
         });
     };
 
