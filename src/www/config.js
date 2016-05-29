@@ -41,10 +41,12 @@ Config.API.Endpoints = {
         Join: Config.API.Base + "/schedule/join",
         AcceptPassenger: Config.API.Base + "/schedule/acceptpassenger",
         RejectPassenger: Config.API.Base + "/schedule/rejectpassenger",
-        Rider: Config.API.Base + "/schedule/rider"
+        Rider: Config.API.Base + "/schedule/rider",
+        Leave: Config.API.Base + "/schedule/leave"
     },
     Chat: {
         Messages: Config.API.Base + "/chat/messages",
-        Send: Config.API.Base + "/chat/send"
+        Send: Config.API.Base + "/chat/send",
+        Rate: Config.API.Base + "/chat/rate"
     }
 };

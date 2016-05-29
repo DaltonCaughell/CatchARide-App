@@ -13,14 +13,17 @@ back-button()
 				p To: {{info.To}}
 	.cr-user-ride-info-body()
 		.cr-info-name() {{info.User.Name}}
+		br
 		div(style="text-align:left;display:inline-block;")
 			p() Rating:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				span.glyphicon.glyphicon-star(ng-repeat="n in range(1,info.Rating)")
 				span.glyphicon.glyphicon-star-empty(ng-repeat="i in range(1,5-info.Rating)")
+				span() &nbsp;&nbsp;({{info.RatingReal | number : 1}})
 			p() Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				a(href="tel:{{info.User.Phone}}"  data-rel="external") {{info.User.Phone}}
 		.cr-driver-info(ng-if="info.IsDriver")
 			.cr-info-name() Vehicle Info
+			br
 			div(style="text-align:left;display:inline-block;")
 				p() Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					span {{info.Car.Brand}} {{info.Car.CarModel}}

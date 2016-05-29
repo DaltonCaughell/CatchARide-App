@@ -58,9 +58,12 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
                 requireLogin: true
             }
         }).state('schedule', {
-            url: "/schedule",
+            url: "/schedule/:upcoming",
             templateUrl: "components/pages/schedule/schedule.html",
             controller: "ScheduleController",
+            params: {
+                upcoming: 'true'
+            },
             data: {
                 requireLogin: true
             }

@@ -7,6 +7,7 @@
 			p.cr-sett-rat() Rating:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				span.glyphicon.glyphicon-star(ng-repeat="n in range(1,user.Rating)")
 				span.glyphicon.glyphicon-star-empty(ng-repeat="i in range(1,5-user.Rating)")
+				span() &nbsp;&nbsp;({{user.RatingReal | number : 1}})
 			p.cr-sett-rat() Account Balance:&nbsp;&nbsp;&nbsp;&nbsp;{{user.Balance | currency}}
 	br
 	div(ng-messages="errors")

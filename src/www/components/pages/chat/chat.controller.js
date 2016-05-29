@@ -24,7 +24,7 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
         function(next) {
             $scope.reloadChat().then(function() {
                 setTimeout(function() {
-                    //next();
+                    next();
                 }, 5000);
             });
         },
@@ -57,6 +57,13 @@ mainApp.controller("ChatController", function($rootScope, $scope, $http, $locati
     $scope.reject = function(RideID, MessageID) {
         crLoading.showWhile(crSchedule.Reject(RideID, MessageID)).then(function() {
             crLoading.showWhile($scope.reloadChat());
+        });
+    };
+
+    $scope.rate = function(message, rating) {
+        console.log(rating);
+        crLoading.showWhile(crChat.Rate(message.ID, message.Rating.ID, rating)).then(function(data) {
+            message.Rating = data;
         });
     };
 
