@@ -36,3 +36,17 @@
     width: 100%;
     max-width: 740px;
 }
+
+.cr-index-cont {
+    position: absolute;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    //top: 130px;
+    height: 100%;
+    padding-bottom: 210px;
+}

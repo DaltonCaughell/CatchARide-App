@@ -38,3 +38,17 @@
 .cr-driver-info {
     margin-top: 20px;
 }
+
+.cr-user-info-cont {
+    position: absolute;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    height: 100%;
+    padding-bottom: 140px;
+}
