@@ -13,7 +13,8 @@ div.cr-bkg-color()
 						div(class="flex-100")
 							span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Seats}}
 		.cr-chats(scroll-glue-bottom="")
-			div(ng-repeat="message in messages", class="layout-column", ng-class="{'layout-align-center-start' : message.FromUserID !== user.ID, 'layout-align-center-end' : message.FromUserID === user.ID}", style="width:100%;")
+			div(ng-repeat="message in messages", class="layout-column", 
+			ng-class="{'layout-align-center-start' : message.FromUserID !== user.ID && message.Type !== 'cash_info', 'layout-align-center-end' : message.FromUserID === user.ID || message.Type === 'cash_info'}", style="width:100%;")
 				div(class="flex-50", style="", ng-if="message.Type === ''")
 					md-card()
 						md-card-content()
@@ -23,6 +24,13 @@ div.cr-bkg-color()
 										.circle.flex(ng-if="message.FromUserID === 0 || message.Type === 'ride_request'") A
 										.circle.flex(ng-if="message.FromUserID !== 0 && message.Type !== 'ride_request'") {{message.User.Name | limitTo : 1 : 0 | uppercase}}
 									div(ng-class="{'flex-100' : message.FromUserID === user.ID, 'flex-90' : message.FromUserID !== user.ID}")
+										p {{message.Message}}
+				div(class="flex-50", style="", ng-if="message.Type === 'cash_info'")
+					md-card()
+						md-card-content()
+							div()
+								div(class="layout-row layout-align-center-center")
+									div.flex-100()
 										p {{message.Message}}
 				div(class="flex-50", style="", ng-if="message.Type === 'ride_request' && !message.Ack")
 					md-card()
