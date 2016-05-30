@@ -4,10 +4,10 @@ back-button()
 		md-card.md-primary.md-hue-1()
 			md-card-content(style="padding:5px 0px 5px 0px;")
 				div(class="layout-column layout-align-center-center")
-					div(class="flex-100", style="margin-bottom:5px;")
+					div(class="", style="margin-bottom:5px;")
 						span(ng-if="search.To === 'SCHOOL'") To School
 						span(ng-if="search.From === 'SCHOOL'") From School
-					div(class="flex-100")
+					div(class="")
 						span() 
 							span {{search.DateTime | date : 'MMMM d' : '-0700'}}
 							span &nbsp;
@@ -16,18 +16,18 @@ back-button()
 		md-card(ng-repeat="ride in rides | orderBy : '-DateTime' : false")
 			md-card-content()
 				div(class="layout-row layout-align-center-center")
-					div(class="flex-20", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
+					div.layout-row.flex-20.layout-align-center-center(ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
 						span() {{ride.User.Name}}
-					div(class="flex-30", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
+					div.layout-row.flex-35.layout-align-center-center(ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})", style="padding:0px 5px 0px 5px;")
 						div(class="layout-column layout-align-center-start")
 							div(class="flex-100")
 								span() 
 									span() Arrive at &nbsp;
 									span() {{ride.DateTime | date : 'hh:mm a' : '-0700'}}
-					div(class="flex-30", ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
+					div.layout-row.flex-30.layout-align-center-center(ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})", style="padding:0px 5px 0px 5px;")
 						span() {{ride.DistFrom | number: 1 }} Miles From You
-					div(class="flex-20", style="")
-						md-button.layout-row.flex.layout-align-center-center(class="flex-100",style="font-size:26px;", ng-click="join(ride.ID)")
+					div.layout-row.flex-15.layout-align-center-center(, style="")
+						md-button.layout-row.flex.layout-align-center-center.cr-dr-ch-button(style="font-size:26px;", ng-click="join(ride.ID)")
 								span.glyphicon.glyphicon-ok-circle()
 		div(ng-if="!rides.length", style="width:100%;text-align:center;")
 			span() Sorry, There Are No Drivers Arriving At Or Arround This Time

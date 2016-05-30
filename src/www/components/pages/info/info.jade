@@ -2,14 +2,14 @@ back-button()
 div.cr-info-cont.cr-bkg-color()
 	div.cr-info-map()
 		div(id="crInfoMap", style="width:100%;height:100%;")
-	.cr-ride-info()
+	.cr-ride-info(ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")
 		div(class="layout-column layout-align-center-center")
-			div(class="flex-100", style="margin-bottom:0px;")
+			div(style="margin-bottom:0px;")
 				span() 
 					span {{ride.DateTime | date : 'MMMM d' : '-0700'}}
 					span &nbsp;
 					span {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
-			div(class="flex-100")
+			div()
 				span() {{ride.User.Name}}'s Car, Seats Left: {{ride.Seats}}
 	.cr-info-p-cards()
 		div(ng-if="!ride.Passengers.length", style="width:100%;text-align:center;margin-top:20px;")

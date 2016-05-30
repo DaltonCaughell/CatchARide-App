@@ -12,7 +12,7 @@ div.cr-sch-cont.cr-bkg-color()
 						span.glyphicon.glyphicon-user(style="font-size:36px;color:black;", ng-if="ride.UserID !== user.ID")
 					div(class="flex-50", ui-sref="info({RideID : ride.ID})")
 						div(class="layout-column layout-align-center-start")
-							div(class="flex-100")
+							div.layout-row.layout-align-center-center(class="")
 								span() 
 									span {{ride.DateTime | date : 'MMMM d' : '-0700'}}
 									span &nbsp;
@@ -22,16 +22,16 @@ div.cr-sch-cont.cr-bkg-color()
 									span(ng-if="ride.Left !== true && (ride.UserID === user.ID && ride.Canceled)", style="color:red;") &nbsp;(You Canceled This Ride)
 									span(ng-if="ride.Left === true", style="color:red;") &nbsp;(You Left This Ride)
 									span(ng-if="ride.Left !== true && (ride.UserID !== user.ID && ride.Canceled)", style="color:red;") &nbsp;(This Ride Was Canceled)
-							div(class="flex-100")
+							div.layout-row.layout-align-center-center(class="")
 								span(ng-if="ride.UserID !== user.ID") Driver: {{ride.User.Name}}
 								span(ng-if="ride.UserID === user.ID") Driver: You
 					div(class="flex-25")
-						.layout-row.flex.layout-align-center-center()
-							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-75", ng-click="chat(ride.ChatID)", style="width:100%;margin:0px 1px 0px 0px;")
-								span.glyphicon.glyphicon-comment
-							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-25", ng-click="cancel(ride.ID)", 
+						.layout-row.layout-align-center-center()
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-65", ng-click="chat(ride.ChatID)", style="width:100%;margin:0px 1px 0px 0px;")
+								span.glyphicon.glyphicon-comment.layout-row.flex.layout-align-center-center
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-35", ng-click="cancel(ride.ID)", 
 							style="width:100%;margin:0px 0px 0px 0px;", ng-if="!ride.isOld")
-								span.glyphicon.glyphicon-remove
+								span.glyphicon.glyphicon-remove.layout-row.flex.layout-align-center-center
 		div(ng-if="!hasUpcoming && upcoming", style="width:100%;text-align:center;") No Upcoming Rides
 		div(ng-if="!hasPast && !upcoming", style="width:100%;text-align:center;") No Past Rides
 cr-footer(page="'schedule'")

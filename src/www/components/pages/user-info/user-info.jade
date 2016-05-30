@@ -4,12 +4,12 @@ back-button()
 		div(id="crUserInfoMap", style="width:100%;height:100%;")
 	.cr-user-ride-info()
 		div(class="layout-column layout-align-center-center")
-			div(class="flex-100", style="margin-bottom:0px;") 
+			div(style="margin-bottom:0px;") 
 				p 
 					span(ng-if="info.IsDriver") Driving From:
 					span(ng-if="!info.IsDriver") Riding From:
 					span &nbsp;{{info.From}}
-			div(class="flex-100")
+			div()
 				p To: {{info.To}}
 	.cr-user-ride-info-body()
 		.cr-info-name() {{info.User.Name}}
