@@ -23,19 +23,19 @@
 			p Internal Error
 		br
 		br
-	div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+	div(class="layout-row layout-align-center-center", style="width:100%;")
 		md-input-container(style="width:100%;margin-top:5px;")
 			label() NAME
 			input(type="text", ng-model="user.Name", required)
-	div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+	div(class="layout-row layout-align-center-center", style="width:100%;")
 		md-input-container(style="width:100%;margin-top:5px;")
 			label() EMAIL
 			input(type="email", ng-model="user.Email", required, ng-disabled="true")
-	div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+	div(class="layout-row layout-align-center-center", style="width:100%;")
 		md-input-container(style="width:100%;margin-top:5px;")
 			label() PHONE NUMBER
 			input(type="tel", ng-model="user.Phone", required)
-	div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+	div(class="layout-row layout-align-center-center", style="width:100%;")
 		md-input-container(style="width:100%;margin-top:5px;")
 			label() ADDRESS
 			input(type="text", ng-model="user.Address", required)
@@ -44,15 +44,15 @@
 			label() DRIVERS LICENSE NUMBER
 			input(type="text", ng-model="user.DLNumber", required)
 	br
-	div(class="layout-column layout-align-center-center flex-100", style="width:100%;")
-		.flex-50.cr-settings-a-button()
-			md-button.layout-align-center-center.md-raised(style="width:200px;", ng-click="changePassword($event)")
+	div(class="layout-column layout-align-center-center", style="width:100%;")
+		.cr-settings-a-button()
+			md-button.md-raised(style="width:200px;", ng-click="changePassword($event)")
 				span() CHANGE PASSWORD
-		.flex-50.cr-settings-a-button()
-			md-button.layout-align-center-center.md-raised(style="width:200px;", ng-click="editCar($event)")
+		.cr-settings-a-button()
+			md-button.md-raised(style="width:200px;", ng-click="editCar($event)")
 				span() EDIT CAR INFO
-		.flex-50.cr-settings-a-button()
-			md-button.layout-align-center-center.md-raised(style="width:200px;", ng-click="payment()")
+		.cr-settings-a-button()
+			md-button.md-raised(style="width:200px;", ng-click="payment()")
 				span() PAYMENT SETTINGS
 	br
 	br

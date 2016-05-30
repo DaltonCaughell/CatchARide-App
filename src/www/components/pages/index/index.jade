@@ -1,9 +1,9 @@
 div.cr-index-cont.cr-bkg-color()
 	div.cr-search-dr-toggle(class="layout-row layout-align-center-center cr-type-select" style="")
-		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !isDriver}", ng-click="isDriver = false;") PASSENGER
-		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : isDriver}", ng-click="isDriver = true;") DRIVER
-	div(class="cr-search-body layout-column layout-align-center-center")
-		div(ng-messages="errors")
+		md-button.md-raised(class="flex-50", ng-class="{'md-primary' : !isDriver}", ng-click="isDriver = false;") PASSENGER
+		md-button.md-raised(class="flex-50", ng-class="{'md-primary' : isDriver}", ng-click="isDriver = true;") DRIVER
+	.layout-column.layout-align-center-center.cr-search-body()
+		div(ng-messages="errors", style="margin-bottom:10px;")
 			div(ng-message="IsDriver", style="color:red;") 
 				p Internal Error
 			div(ng-message="From", style="color:red;") 
@@ -16,24 +16,16 @@ div.cr-index-cont.cr-bkg-color()
 				p You Are Not Registered As A Driver
 			div(ng-message="internal_error", style="color:red;") 
 				p Internal Error
+		md-input-container(style="width:100%;")
+			label() FROM
+			input(type="text", ng-model="from", required, ng-disabled="isFromSchool")
+		md-input-container(style="margin-top:5px;width:100%;")
+			label() TO
+			input(type="text", ng-model="to", required, ng-disabled="isToSchool")
 		br
-		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
-			md-input-container(class="flex-100")
-				label() FROM
-				input(type="text", ng-model="from", required, ng-disabled="isFromSchool")
-		div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
-			md-input-container(style="margin-top:5px;", class="flex-100")
-				label() TO
-				input(type="text", ng-model="to", required, ng-disabled="isToSchool")
-		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
-			div(class="flex-50 layout-align-center-center")
-				div(style="margin-left:auto;margin-right:auto;width:200px;")
-					mdp-date-picker(mdp-placeholder="Arrival Date", ng-model="date")
-			div(class="flex-50 layout-align-center-center")
-				div(style="margin-left:auto;margin-right:auto;width:200px;")
-					mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="time")
-		div(class="layout-row layout-align-center-center flex-100", style="width:100%;margin-top:10px;")
-			md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-100", ng-click="search(from, to, date, time)")
-				span(ng-if="isDriver") SCHEDULE
-				span(ng-if="!isDriver") SEARCH
+		mdp-date-picker.cr-index-dp(mdp-placeholder="Arrival Date", ng-model="date", style="width:100%;margin-bottom:10px;")
+		mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="time", style="width:100%;", mdp-format="hh:mm A")
+		md-button.md-raised(ng-click="search(from, to, date, time)", style="width:100%;")
+			span(ng-if="isDriver") SCHEDULE
+			span(ng-if="!isDriver") SEARCH
 cr-footer(page="'index'")

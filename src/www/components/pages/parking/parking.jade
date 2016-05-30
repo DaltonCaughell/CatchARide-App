@@ -1,18 +1,19 @@
-div.cr-parking-cont.cr-bkg-color(style="max-width:1024px;margin-left:auto;margin-right:auto;margin-bottom:120px;")
-	div(class="layout-row layout-align-center-center cr-type-select" style="width:380px;")
-		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !map}", ng-click="map = false;") LIST
-		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : map}", ng-click="showMap();") MAP
-	.cr-parking-cards(ng-show="!map")
-		md-card(ng-repeat="lot in lots" class="cr-parking-card")
-			md-card-content()
-				div(class="layout-row layout-align-center-center")
-					div(class="flex-25", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-						span {{lot.Name}}
-					div(class="flex-40", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-						span Spaces Available: {{lot.Available}}
-					div(class="flex-35", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
-						md-switch(ng-model="lot.notify" aria-label="Notifications") 
-							span(class="cr-switch-text") Notifications
+div.cr-parking-cont.cr-bkg-color()
+	div.cr-type-select-parking(class="layout-row layout-align-center-center")
+		md-button.md-raised(class="flex-50", ng-class="{'md-primary' : !map}", ng-click="map = false;") LIST
+		md-button.md-raised(class="flex-50", ng-class="{'md-primary' : map}", ng-click="showMap();") MAP
+	.cr-parking-cont-cards()
+		.cr-parking-cards(ng-show="!map")
+			md-card(ng-repeat="lot in lots" class="cr-parking-card")
+				md-card-content()
+					div(class="layout-row layout-align-center-center")
+						div(class="flex-25", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+							span {{lot.Name}}
+						div(class="flex-45", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
+							span Spaces Available: {{lot.Available}}
+						div(class="flex-30", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}",style="padding-left:5px;")
+							md-switch(ng-model="lot.notify" aria-label="Notifications") 
+								span(class="cr-switch-text") Notify
 	.cr-parking-map(ng-show="map")
 		.cr-parking-map-cont()
 			div(id="crParkingMap")

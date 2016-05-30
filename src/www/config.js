@@ -2,8 +2,9 @@ var Config = {
     API: {
         Protocol: "http://",
         //Host: "localhost:3000",
-        Host: "192.168.1.6:3000",
+        //Host: "192.168.1.6:3000",
         //Host: "app.daltoncaughell.com:3000",
+        Host: "73.97.183.195:3000",
         Version: "/api/v1",
         Base: ""
     },
@@ -13,7 +14,8 @@ var Config = {
     CONST: {
         InternalError: 'Internal Error',
         IncorrectEmailPassword: 'Incorrect Email/Password'
-    }
+    },
+    DEV_MODE: true
 };
 
 Config.API.Base = Config.API.Protocol + Config.API.Host + Config.API.Version;
