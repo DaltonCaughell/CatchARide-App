@@ -88,6 +88,13 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 requireLogin: (Config.DEV_MODE) ? false : true
             }
+        }).state('reset', {
+            url: "/reset/:TempKey",
+            templateUrl: "components/pages/reset/reset.html",
+            controller: "ResetController",
+            data: {
+                requireLogin: (Config.DEV_MODE) ? false : false
+            }
         }).state('default', {
             url: "*path",
             templateUrl: "components/pages/index/index.html",

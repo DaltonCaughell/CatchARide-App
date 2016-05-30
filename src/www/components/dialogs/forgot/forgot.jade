@@ -1,0 +1,24 @@
+md-dialog.cr-forgot-dlg()
+	md-dialog-content()
+		br
+		div(ng-messages="errors")
+			div(ng-message="Email", style="color:red;") 
+				p Invalid Email
+			div(ng-message="internal_error", style="color:red;") 
+				p Internal Error
+		br
+		div(ng-if="showEmail")
+			div(class="layout-row layout-align-center-center flex-100", style="width:100%;")
+				md-input-container(style="width:100%;margin-top:5px;")
+					label() EMAIL ADDRESS
+					input(type="email", required, md-maxlength="255", ng-model="user.Email")
+		div(ng-if="!showEmail")
+			p() A Password Reset Email Has Been Sent To Your Email
+		br
+	md-dialog-actions()
+		md-button.md-raised(ng-click="close()", ng-if="showEmail")
+			span() CANCEL
+		md-button.md-raised(ng-click="sendForgot()", ng-if="showEmail")
+			span() SEND
+		md-button.md-raised(ng-click="close()", ng-if="!showEmail")
+			span() CLOSE

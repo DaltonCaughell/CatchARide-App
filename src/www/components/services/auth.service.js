@@ -96,6 +96,63 @@ mainApp.factory('Auth', function($http, $loading) {
         return deferred.promise;
     };
 
+    service.ForgotPassword = function(email) {
+
+        var deferred = Q.defer();
+
+        var p = $http.post(Config.API.Endpoints.Auth.Forgot, {
+            Email: email
+        });
+
+        p.then(function(res) {
+            var data = res.data;
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            if (res.status === 422) {
+                if (data.length > 0) {
+                    deferred.reject(data[0].fieldNames[0]);
+                } else {
+                    deferred.reject('internal_error');
+                }
+            } else {
+                deferred.reject('internal_error');
+            }
+        });
+
+        return deferred.promise;
+    };
+
+    service.ResetPassword = function(pass, TempKey) {
+
+        var deferred = Q.defer();
+
+        var p = $http.post(Config.API.Endpoints.Auth.Reset, {
+            Password: pass,
+            TempKey: TempKey
+        });
+
+        p.then(function(res) {
+            var data = res.data;
+            service.setAuth(data.Session.ApiKey);
+            deferred.resolve(data);
+        }, function(res) {
+            var data = res.data;
+            if (res.status === 422) {
+                if (data.length > 0) {
+                    deferred.reject(data[0].fieldNames[0]);
+                } else {
+                    deferred.reject('internal_error');
+                }
+            } else {
+                deferred.reject('internal_error');
+            }
+        });
+
+        return deferred.promise;
+    };
+
+
     return service;
 
 });

@@ -30,7 +30,9 @@ Config.API.Endpoints = {
     Auth: {
         Login: Config.API.Base + "/auth/login",
         Create: Config.API.Base + "/auth/create",
-        Password: Config.API.Base + "/auth/password"
+        Password: Config.API.Base + "/auth/password",
+        Forgot: Config.API.Base + "/auth/forgot",
+        Reset: Config.API.Base + "/auth/reset"
     },
     Parking: {
         All: Config.API.Base + "/parking/all",
