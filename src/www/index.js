@@ -36,6 +36,11 @@ mainApp.run(function(ModalService, $rootScope, $state, Auth, $animate) {
         return input;
     };
 
+    $rootScope.logout = function() {
+        Auth.logOut();
+        $state.go("entry");
+    };
+
 });
 
 mainApp.config(function($httpProvider, $mdThemingProvider) {

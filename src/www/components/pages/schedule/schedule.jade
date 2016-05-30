@@ -3,7 +3,7 @@ div.cr-sch-cont.cr-bkg-color()
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : upcoming}", ui-sref="schedule({'upcoming' : true})", style="margin:0px;") UPCOMING
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !upcoming}", ui-sref="schedule({'upcoming' : false})", style="margin:0px;") PAST
 	.cr-schedual-cards()
-		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : true")
+		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : upcoming")
 			md-card-content(style="padding:5px 0px 5px 0px;")
 				div(class="layout-row layout-align-center-center")
 					div(class="flex-15", ui-sref="info({RideID : ride.ID})")
@@ -27,9 +27,10 @@ div.cr-sch-cont.cr-bkg-color()
 								span(ng-if="ride.UserID === user.ID") Driver: You
 					div(class="flex-25")
 						.layout-row.flex.layout-align-center-center()
-							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-50", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;margin:0px 1px 0px 0px;")
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-75", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;margin:0px 1px 0px 0px;")
 								span.glyphicon.glyphicon-comment
-							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-50", ng-click="cancel(ride.ID)", style="width:100%;margin:0px 0px 0px 0px;")
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-25", ng-click="cancel(ride.ID)", 
+							style="width:100%;margin:0px 0px 0px 0px;", ng-if="!ride.isOld")
 								span.glyphicon.glyphicon-remove
 		div(ng-if="!hasUpcoming && upcoming", style="width:100%;text-align:center;") No Upcoming Rides
 		div(ng-if="!hasPast && !upcoming", style="width:100%;text-align:center;") No Past Rides

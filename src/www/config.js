@@ -15,7 +15,7 @@ var Config = {
         InternalError: 'Internal Error',
         IncorrectEmailPassword: 'Incorrect Email/Password'
     },
-    DEV_MODE: true
+    DEV_MODE: false
 };
 
 Config.API.Base = Config.API.Protocol + Config.API.Host + Config.API.Version;
