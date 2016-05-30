@@ -3,7 +3,7 @@ mainApp.controller("AddCarController", function($scope, $http, $location, $state
     $scope.errors = {};
 
     $scope.add = function(dlNumber, brand, model, seats, licensePlateNumber) {
-        if (!isNaN(car.Seats)) {
+        if (!isNaN(seats)) {
             crLoading.showWhile(crUser.addCar(dlNumber, brand, model, Number(seats), licensePlateNumber)).then(function(data) {
                 $scope.errors = {};
                 $state.go('index');

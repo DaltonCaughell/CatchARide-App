@@ -2,6 +2,17 @@ mainApp.factory('crSchedule', function($http, $loading) {
 
     var service = {};
 
+    var params = {};
+
+    params.Date = new Date();
+    params.Time = new Date();
+    params.To = "";
+    params.From = "";
+
+    service.GetParams = function() {
+        return params;
+    };
+
     service.Search = function(isDriver, from, to, date) {
         var deferred = Q.defer();
 

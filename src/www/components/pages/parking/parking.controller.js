@@ -1,4 +1,4 @@
-mainApp.controller("ParkingController", function($scope, $http, $location, $state, crParking) {
+mainApp.controller("ParkingController", function($scope, $http, $location, $state, crParking, crLoading) {
 
     $scope.map = false;
 
@@ -6,26 +6,33 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
 
     var markers = [];
 
+    $scope.reloadParking = function() {
+        var deferred = Q.defer();
+        crParking.All().then(function(lots) {
+            $scope.lots = lots;
+            if ($scope.map) {
+                setTimeout(function() {
+                    $scope.markMap(lots);
+                }, 10);
+            }
+            $scope.$apply();
+            deferred.resolve();
+        }, function() {
+            deferred.resolve();
+        });
+        return deferred.promise;
+    };
+
+
     async.whilst(
         function() {
             return $scope.poll;
         },
         function(next) {
-            crParking.All().then(function(lots) {
-                $scope.lots = lots;
-                if ($scope.map) {
-                    setTimeout(function() {
-                        $scope.markMap(lots);
-                    }, 10);
-                }
-                $scope.$apply();
+            $scope.reloadParking().then(function() {
                 setTimeout(function() {
                     next();
-                }, 5 * 1000);
-            }, function() {
-                setTimeout(function() {
-                    next();
-                }, 5 * 1000);
+                }, 1000 * 5);
             });
         },
         function(err) {
@@ -64,5 +71,11 @@ mainApp.controller("ParkingController", function($scope, $http, $location, $stat
     $scope.$on('$destroy', function() {
         $scope.poll = false;
     });
+
+    $scope.setNotify = function(LotID, Notify) {
+        crLoading.showWhile(crParking.SetNotify(LotID, Notify)).then(function(notify) {
+            crLoading.showWhile($scope.reloadParking());
+        });
+    };
 
 });

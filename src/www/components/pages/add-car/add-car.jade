@@ -7,7 +7,7 @@ back-button()
 div.cr-bkg-color.cr-add-car-cont()
 	.layout-row.layout-align-center-center(style="margin-bottom:0px;")
 		img(src="/assets/img/sports-car.png" style="width:190px;height:190px;")
-	.layout-column.layout-align-center-center()
+	.layout-column.layout-align-center-center(ng-keyup="$event.keyCode == 13 && add(dlNumber, brand, model, seats, licensePlateNumber)")
 		div(ng-messages="errors")
 			div(ng-message="DLNumber", style="color:red;") 
 				p Invalid Driver's License Number

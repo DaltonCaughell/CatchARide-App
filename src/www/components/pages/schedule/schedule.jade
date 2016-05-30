@@ -3,7 +3,7 @@ div.cr-sch-cont.cr-bkg-color()
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : upcoming}", ui-sref="schedule({'upcoming' : true})", style="margin:0px;") UPCOMING
 		md-button.layout-row.flex.layout-align-center-center.md-raised(class="flex-50", ng-class="{'md-primary' : !upcoming}", ui-sref="schedule({'upcoming' : false})", style="margin:0px;") PAST
 	.cr-schedual-cards()
-		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : upcoming")
+		md-card(ng-repeat="ride in rides | filter : { isOld : (!upcoming) ? true : false } | orderBy : '-time' : upcoming", ng-class="{'cr-has-message' : ride.UnreadMessages}")
 			md-card-content(style="padding:5px 0px 5px 0px;")
 				div(class="layout-row layout-align-center-center")
 					div(class="flex-15", ui-sref="info({RideID : ride.ID})")
@@ -14,10 +14,10 @@ div.cr-sch-cont.cr-bkg-color()
 						div(class="layout-column layout-align-center-start")
 							div(class="flex-100")
 								span() 
-									u {{ride.DateTime | date : 'MMMM d' : '-0700'}}
-									u &nbsp;
-									u(ng-if="!ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
-									u(ng-if="ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
+									span {{ride.DateTime | date : 'MMMM d' : '-0700'}}
+									span &nbsp;
+									span(ng-if="!ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
+									span(ng-if="ride.isOld") {{ride.DateTime | date : '@ hh:mm a' : '-0700'}}
 									span(ng-if="ride.UserID !== user.ID && ride.Approved === false", style="color:red;") &nbsp;(Not Approved)
 									span(ng-if="ride.Left !== true && (ride.UserID === user.ID && ride.Canceled)", style="color:red;") &nbsp;(You Canceled This Ride)
 									span(ng-if="ride.Left === true", style="color:red;") &nbsp;(You Left This Ride)
@@ -27,7 +27,7 @@ div.cr-sch-cont.cr-bkg-color()
 								span(ng-if="ride.UserID === user.ID") Driver: You
 					div(class="flex-25")
 						.layout-row.flex.layout-align-center-center()
-							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-75", ui-sref="chat({ChatID : ride.ChatID})", style="width:100%;margin:0px 1px 0px 0px;")
+							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-75", ng-click="chat(ride.ChatID)", style="width:100%;margin:0px 1px 0px 0px;")
 								span.glyphicon.glyphicon-comment
 							md-button.layout-row.flex.layout-align-center-center.md-raised.md-primary(class="flex-25", ng-click="cancel(ride.ID)", 
 							style="width:100%;margin:0px 0px 0px 0px;", ng-if="!ride.isOld")

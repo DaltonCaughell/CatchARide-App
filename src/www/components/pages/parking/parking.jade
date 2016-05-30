@@ -12,7 +12,7 @@ div.cr-parking-cont.cr-bkg-color()
 						div(class="flex-45", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}")
 							span Spaces Available: {{lot.Available}}
 						div(class="flex-30", ng-class="{'warn' : lot.Available < 20 && lot.Available > 0, 'none' : lot.Available === 0, 'fine' : lot.Available >= 20}",style="padding-left:5px;")
-							md-switch(ng-model="lot.notify" aria-label="Notifications") 
+							md-switch(ng-model="lot.Notification.Notify", aria-label="Notifications", ng-change="setNotify(lot.ID, lot.Notification.Notify)") 
 								span(class="cr-switch-text") Notify
 	.cr-parking-map(ng-show="map")
 		.cr-parking-map-cont()

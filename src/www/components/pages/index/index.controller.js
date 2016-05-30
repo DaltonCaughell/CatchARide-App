@@ -7,33 +7,29 @@ mainApp.controller("IndexController", function($scope, $http, $location, $state,
     $scope.isToSchool = false;
     $scope.isFromSchool = false;
 
-    $scope.to = "";
-    $scope.from = "";
+    $scope.params = crSchedule.GetParams();
 
-    $scope.date = new Date();
-    $scope.time = new Date();
-
-    $scope.$watch('to', function() {
-        if ($scope.to !== "" && $scope.to !== undefined && $scope.to !== "SCHOOL") {
+    $scope.$watch('params.To', function() {
+        if ($scope.params.To !== "" && $scope.params.To !== undefined && $scope.params.To !== "SCHOOL") {
             $scope.isToSchool = false;
             $scope.isFromSchool = true;
-            $scope.from = "SCHOOL";
-        } else if (($scope.to === "" || $scope.to === undefined) && $scope.from === "SCHOOL") {
+            $scope.params.From = "SCHOOL";
+        } else if (($scope.params.To === "" || $scope.params.To === undefined) && $scope.params.From === "SCHOOL") {
             $scope.isToSchool = false;
             $scope.isFromSchool = false;
-            $scope.from = "";
+            $scope.params.From = "";
         }
     });
 
-    $scope.$watch('from', function() {
-        if ($scope.from !== "" && $scope.from !== undefined && $scope.from !== "SCHOOL") {
+    $scope.$watch('params.From', function() {
+        if ($scope.params.From !== "" && $scope.params.From !== undefined && $scope.params.From !== "SCHOOL") {
             $scope.isToSchool = true;
             $scope.isFromSchool = false;
-            $scope.to = "SCHOOL";
-        } else if (($scope.from === "" || $scope.from === undefined) && $scope.to === "SCHOOL") {
+            $scope.params.To = "SCHOOL";
+        } else if (($scope.params.From === "" || $scope.params.From === undefined) && $scope.params.To === "SCHOOL") {
             $scope.isToSchool = false;
             $scope.isFromSchool = false;
-            $scope.to = "";
+            $scope.params.To = "";
         }
     });
 

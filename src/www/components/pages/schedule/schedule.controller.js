@@ -6,12 +6,15 @@ mainApp.controller("ScheduleController", function($scope, $http, $location, $sta
     $scope.hasUpcoming = false;
     $scope.hasPast = false;
 
+    $scope.poll = true;
+
     $scope.upcoming = ($stateParams.upcoming === undefined || $stateParams.upcoming === null) ? true : ($stateParams.upcoming === 'true') ? true : false;
 
     $scope.reload = function() {
-        crLoading.showWhile(crUser.Me()).then(function(user) {
+        var deferred = Q.defer();
+        crUser.Me().then(function(user) {
             $scope.user = user;
-            crLoading.showWhile(crSchedule.Me()).then(function(rides) {
+            crSchedule.Me().then(function(rides) {
                 $scope.hasUpcoming = false;
                 $scope.hasPast = false;
                 var date = new Date();
@@ -28,11 +31,32 @@ mainApp.controller("ScheduleController", function($scope, $http, $location, $sta
                 });
                 console.log(rides);
                 $scope.rides = rides;
+                deferred.resolve();
+            }, function() {
+                deferred.resolve();
             });
+        }, function() {
+            deferred.resolve();
         });
+        return deferred.promise;
     };
 
-    $scope.reload();
+    crLoading.showWhile($scope.reload()).then(function() {
+        async.whilst(
+            function() {
+                return $scope.poll;
+            },
+            function(next) {
+                $scope.reload().then(function() {
+                    setTimeout(function() {
+                        next();
+                    }, 1000 * 5);
+                });
+            },
+            function(err) {
+
+            });
+    });
 
 
     $scope.cancel = function(RideID) {
@@ -68,6 +92,14 @@ mainApp.controller("ScheduleController", function($scope, $http, $location, $sta
                 });
             }
         }
+    };
+
+    $scope.$on('$destroy', function() {
+        $scope.poll = false;
+    });
+
+    $scope.chat = function(id) {
+        $state.go("chat", { "ChatID": id });
     };
 
 });

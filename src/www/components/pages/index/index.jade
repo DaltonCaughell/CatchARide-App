@@ -18,15 +18,15 @@ div.cr-index-cont.cr-bkg-color()
 				p Internal Error
 		md-input-container(style="width:100%;")
 			label() FROM
-			input(type="text", ng-model="from", required, ng-disabled="isFromSchool")
+			input(type="text", ng-model="params.From", required, ng-disabled="isFromSchool")
 		md-input-container(style="margin-top:5px;width:100%;")
 			label() TO
-			input(type="text", ng-model="to", required, ng-disabled="isToSchool")
+			input(type="text", ng-model="params.To", required, ng-disabled="isToSchool")
 		br
 		div.cr-index-date-inputs()
-			mdp-date-picker.cr-index-dp(mdp-placeholder="Arrival Date", ng-model="date", style="width:100%;margin-bottom:10px;")
-			mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="time", style="width:100%;", mdp-format="hh:mm A")
-		md-button.md-raised(ng-click="search(from, to, date, time)", style="width:100%;")
+			mdp-date-picker.cr-index-dp(mdp-placeholder="Arrival Date", ng-model="params.Date", style="width:100%;margin-bottom:10px;")
+			mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="params.Time", style="width:100%;", mdp-format="hh:mm A")
+		md-button.md-raised(ng-click="search(params.From, params.To, params.Date, params.Time)", style="width:100%;")
 			span(ng-if="isDriver") SCHEDULE
 			span(ng-if="!isDriver") SEARCH
 cr-footer(page="'index'")

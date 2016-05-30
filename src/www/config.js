@@ -33,7 +33,8 @@ Config.API.Endpoints = {
         Password: Config.API.Base + "/auth/password"
     },
     Parking: {
-        All: Config.API.Base + "/parking/all"
+        All: Config.API.Base + "/parking/all",
+        Notify: Config.API.Base + "/parking/notify"
     },
     Schedule: {
         Search: Config.API.Base + "/schedule/search",
