@@ -25,7 +25,7 @@ div.cr-index-cont.cr-bkg-color()
 		br
 		div.cr-index-date-inputs()
 			mdp-date-picker.cr-index-dp(mdp-placeholder="Arrival Date", ng-model="params.Date", style="width:100%;margin-bottom:10px;")
-			mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="params.Time", style="width:100%;", mdp-format="hh:mm A")
+			mdp-time-picker(mdp-placeholder="Arrival Time", ng-model="params.Time", style="width:100%;", mdp-format="hh:mm A", mdp-auto-switch="true")
 		md-button.md-raised(ng-click="search(params.From, params.To, params.Date, params.Time)", style="width:100%;")
 			span(ng-if="isDriver") SCHEDULE
 			span(ng-if="!isDriver") SEARCH
