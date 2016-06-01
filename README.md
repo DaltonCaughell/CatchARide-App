@@ -6,15 +6,15 @@ CatchARide was a Cordova/Angular app built as a proof of concept for a Universit
 
 A working demo is hosted at http://www.catcharide.today
 
-This repository hold the front-end code for the app. The golang API backing it can be found [here](https://github.com/DaltonCaughell/CatchARide-API)
+This repository holds the front-end code for the app. The golang API backing it can be found [here](https://github.com/DaltonCaughell/CatchARide-API)
 
 ## What is CatchARide’s front-end stack?
 
-*Gulp
-*Cordova
+* Gulp
+* Cordova
 * Angular
-*Angular Material
-*Bootstrap (Icons Only)
+* Angular Material
+* Bootstrap (Icons Only)
 
 ## Can I build/run CatchARide?
 
