@@ -13,7 +13,7 @@ back-button()
 							span &nbsp;
 							span {{search.DateTime | date : '@ hh:mm a' : '-0700'}}
 	.cr-drivers-list()
-		md-card(ng-repeat="ride in rides | orderBy : '-DateTime' : false")
+		md-card(ng-repeat="ride in rides | orderBy : '-DateTime' : true")
 			md-card-content()
 				div(class="layout-row layout-align-center-center")
 					div.layout-row.flex-20.layout-align-center-center(ui-sref="user-info({'RideID' : ride.ID, 'UserID': ride.User.ID})")

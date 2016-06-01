@@ -2,8 +2,8 @@ var Config = {
     API: {
         Protocol: "http://",
         //Host: "localhost:3000",
-        //Host: "192.168.1.6:3000",
-        Host: "www.catcharide.today:3000",
+        Host: "192.168.1.6:3000",
+        //Host: "www.catcharide.today:3000",
         //Host: "73.97.183.195:3000",
         Version: "/api/v1",
         Base: ""
