@@ -163,7 +163,7 @@ gulp.task('buildandroid', ['compile'], function() {
 
 gulp.task('runandroid', ['buildandroid'], function(cb) {
     process.chdir(buildDir);
-    exec('adb -d install -r %UserProfile%/Documents/Fasterbids/FasterbidsPhonegap/build/platforms/android/build/outputs/apk/android-debug.apk', function(err, stdout, stderr) {
+    exec('adb -d install -r %UserProfile%/Documents/CatchARide/CatchARide-App/build/platforms/android/build/outputs/apk/android-debug.apk', function(err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
